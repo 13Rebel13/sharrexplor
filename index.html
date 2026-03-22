@@ -7,481 +7,213 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --orange: #E8611A;
-            --orange-dark: #C4510F;
-            --dark: #1A1A1A;
-            --grey: #2D2D2D;
-            --light: #F5F5F0;
-            --white: #FFFFFF;
-        }
-
+        :root { --orange: #E8611A; --orange-dark: #C4510F; --dark: #1A1A1A; --light: #F5F5F0; --white: #FFFFFF; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
 
+        /* LANG SWITCHER */
+        .lang-bar {
+            position: fixed; top: 0; width: 100%; z-index: 200;
+            background: var(--dark); display: flex; justify-content: flex-end;
+            padding: 5px 20px; gap: 10px;
+        }
+        .lang-btn {
+            background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);
+            padding: 3px 12px; font-size: 0.75rem; cursor: pointer; letter-spacing: 1px;
+            font-family: 'Inter', sans-serif; transition: all 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover { color: var(--orange); border-color: var(--orange); }
+
+        [data-lang] { display: none; }
+        [data-lang].show { display: block; }
+        span[data-lang].show, a[data-lang].show { display: inline; }
+        div.cta[data-lang].show, div.form-row[data-lang].show { display: grid; }
+        div.location-highlights[data-lang].show { display: grid; }
+        li[data-lang].show { display: list-item; }
+        option[data-lang].show { display: block; }
+        p[data-lang].show { display: block; }
+
         /* HERO */
         .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 700px;
-            background: linear-gradient(135deg, rgba(26,26,26,0.7), rgba(26,26,26,0.4)),
-                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80') center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
+            position: relative; height: 100vh; min-height: 600px;
+            background: linear-gradient(135deg, rgba(26,26,26,0.75), rgba(26,26,26,0.45)),
+                        url('img/hero.jpg') center/cover no-repeat;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: var(--white); padding-top: 30px;
         }
-        .hero-logo {
-            width: 200px;
-            margin-bottom: 30px;
-        }
-        .hero-logo img {
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
-        }
+        .hero-logo { width: 180px; margin-bottom: 25px; }
+        .hero-logo img { width: 100%; height: auto; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5)); }
         .hero h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            line-height: 1;
+            font-family: 'Oswald', sans-serif; font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 700; letter-spacing: 5px; text-transform: uppercase; line-height: 1;
         }
         .hero h1 .sharr { color: var(--white); }
-        .hero h1 .dot { color: var(--orange); margin: 0 4px; font-size: 0.6em; vertical-align: middle; }
         .hero h1 .explor { color: var(--orange); }
         .hero .tagline {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            margin-top: 10px;
-            font-weight: 400;
-            color: rgba(255,255,255,0.8);
+            font-family: 'Oswald', sans-serif; font-size: clamp(1rem, 3vw, 1.4rem);
+            letter-spacing: 8px; text-transform: uppercase; margin-top: 8px;
+            font-weight: 400; color: rgba(255,255,255,0.8);
         }
-        .hero .location {
-            margin-top: 25px;
-            font-size: 1rem;
-            color: rgba(255,255,255,0.7);
-            letter-spacing: 2px;
-        }
-        .hero .cta {
-            margin-top: 40px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+        .hero .location { margin-top: 20px; font-size: 0.95rem; color: rgba(255,255,255,0.7); letter-spacing: 2px; }
+        .hero .cta { margin-top: 35px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
         .btn {
-            display: inline-block;
-            padding: 16px 40px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
+            display: inline-block; padding: 15px 36px; font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase;
+            text-decoration: none; border: none; cursor: pointer; transition: all 0.3s;
         }
         .btn-primary { background: var(--orange); color: var(--white); }
         .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
         .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); }
         .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
         /* NAV */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
+            position: fixed; top: 28px; width: 100%; z-index: 100;
+            padding: 12px 30px; display: flex; justify-content: space-between;
+            align-items: center; transition: all 0.3s;
         }
-        nav.scrolled {
-            background: rgba(26,26,26,0.95);
-            backdrop-filter: blur(10px);
-            padding: 10px 40px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-        }
-        nav .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        nav .brand img {
-            height: 45px;
-            width: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        nav .brand-text {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 2px;
-        }
-        nav .brand-text .b-sharr { color: var(--white); }
+        nav.scrolled { background: rgba(26,26,26,0.95); backdrop-filter: blur(10px); padding: 8px 30px; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+        nav .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        nav .brand img { height: 40px; width: auto; }
+        nav .brand-text { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); letter-spacing: 2px; }
         nav .brand-text .b-explor { color: var(--orange); }
-        nav ul { list-style: none; display: flex; gap: 30px; }
-        nav ul a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav ul a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
         nav ul a:hover { color: var(--orange); }
 
         /* SECTIONS */
-        section { padding: 100px 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        .section-subtitle {
-            text-align: center;
-            color: #888;
-            font-size: 1rem;
-            margin-bottom: 60px;
-            letter-spacing: 1px;
-        }
-        .section-line {
-            width: 60px;
-            height: 3px;
-            background: var(--orange);
-            margin: 0 auto 20px;
-        }
+        section { padding: 80px 20px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-title { font-family: 'Oswald', sans-serif; font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; text-align: center; margin-bottom: 12px; }
+        .section-subtitle { text-align: center; color: #888; font-size: 0.95rem; margin-bottom: 50px; letter-spacing: 1px; }
+        .section-line { width: 60px; height: 3px; background: var(--orange); margin: 0 auto 18px; }
 
         /* ACTIVITIES */
         #activities { background: var(--light); }
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .activity-card {
-            background: var(--white);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .activity-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .activity-img {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        .activity-img::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 100px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.3));
-        }
-        .activity-icon {
-            position: absolute;
-            top: 15px; right: 15px;
-            width: 50px; height: 50px;
-            background: var(--orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            z-index: 2;
-        }
-        .activity-body { padding: 25px; }
-        .activity-body h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        .activity-body p { color: #666; line-height: 1.6; font-size: 0.95rem; }
-        .activity-price {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 5px 15px;
-            background: var(--dark);
-            color: var(--orange);
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
+        .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .activity-card { background: var(--white); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+        .activity-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .activity-img { height: 220px; background-size: cover; background-position: center; }
+        .activity-body { padding: 22px; }
+        .activity-body h3 { font-family: 'Oswald', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .activity-body p { color: #666; line-height: 1.6; font-size: 0.9rem; }
+        .activity-price { display: inline-block; margin-top: 12px; padding: 5px 14px; background: var(--dark); color: var(--orange); font-family: 'Oswald', sans-serif; font-size: 0.85rem; letter-spacing: 1px; }
 
         /* PACKAGES */
         #packages { background: var(--dark); color: var(--white); }
         #packages .section-title { color: var(--white); }
         #packages .section-subtitle { color: rgba(255,255,255,0.5); }
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        .package-card {
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 40px;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s;
-        }
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .package-card { border: 1px solid rgba(255,255,255,0.1); padding: 35px; text-align: center; position: relative; transition: all 0.3s; }
         .package-card:hover { border-color: var(--orange); }
-        .package-card.featured {
-            border-color: var(--orange);
-            background: rgba(232,97,26,0.05);
-        }
+        .package-card.featured { border-color: var(--orange); background: rgba(232,97,26,0.05); }
         .package-card.featured::before {
-            content: 'MOST POPULAR';
-            position: absolute;
-            top: -12px; left: 50%;
-            transform: translateX(-50%);
-            background: var(--orange);
-            color: var(--white);
-            padding: 4px 20px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+            content: attr(data-badge); position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--orange); color: var(--white); padding: 4px 18px;
+            font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 2px; white-space: nowrap;
         }
-        .package-name {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .package-price {
-            font-family: 'Oswald', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--orange);
-            line-height: 1;
-        }
+        .package-name { font-family: 'Oswald', sans-serif; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+        .package-price { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 700; color: var(--orange); line-height: 1; }
         .package-price span { font-size: 1rem; color: rgba(255,255,255,0.5); }
-        .package-period {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-        }
-        .package-features { list-style: none; text-align: left; margin-bottom: 30px; }
-        .package-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-        }
-        .package-features li::before {
-            content: '✓';
-            color: var(--orange);
-            font-weight: bold;
-            margin-right: 10px;
-        }
+        .package-period { color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-bottom: 20px; }
+        .package-features { list-style: none; text-align: left; margin-bottom: 25px; }
+        .package-features li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+        .package-features li::before { content: '✓'; color: var(--orange); font-weight: bold; margin-right: 10px; }
 
         /* LOCATION */
         #location { background: var(--light); }
-        .location-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        .location-text h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-        .location-text p { color: #666; line-height: 1.8; margin-bottom: 15px; }
-        .location-highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        .highlight {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            color: #555;
-        }
-        .highlight-icon {
-            width: 40px; height: 40px;
-            background: var(--orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-        .location-img {
-            height: 500px;
-            background: url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80') center/cover;
-        }
+        .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .location-text h3 { font-family: 'Oswald', sans-serif; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; }
+        .location-text p { color: #666; line-height: 1.8; margin-bottom: 12px; }
+        .location-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+        .highlight { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #555; }
+        .highlight-dot { width: 10px; height: 10px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+        .location-img { height: 450px; background: url('img/location.jpg') center/cover; }
 
         /* GALLERY */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-        }
-        .gallery-item {
-            height: 280px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0);
-            transition: background 0.3s;
-        }
-        .gallery-item:hover::after { background: rgba(232,97,26,0.3); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+        .gallery-item { height: 250px; background-size: cover; background-position: center; cursor: pointer; position: relative; overflow: hidden; }
+        .gallery-item::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 0.3s; }
+        .gallery-item:hover::after { background: rgba(232,97,26,0.25); }
 
         /* CONTACT */
         #contact { background: var(--dark); color: var(--white); }
         #contact .section-title { color: var(--white); }
         #contact .section-subtitle { color: rgba(255,255,255,0.5); }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .contact-info h3 { font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; color: var(--orange); }
+        .contact-info p { color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 18px; }
+        .contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+        .contact-detail span:first-child { color: var(--orange); font-size: 1.1rem; }
+        .contact-form input, .contact-form textarea, .contact-form select {
+            width: 100%; padding: 14px; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1); color: var(--white);
+            font-family: 'Inter', sans-serif; font-size: 0.9rem; margin-bottom: 12px; transition: border-color 0.3s;
         }
-        .contact-info h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            color: var(--orange);
-        }
-        .contact-info p { color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 20px; }
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            color: rgba(255,255,255,0.7);
-        }
-        .contact-detail span:first-child { color: var(--orange); font-size: 1.2rem; }
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            transition: border-color 0.3s;
-        }
-        .contact-form input:focus,
-        .contact-form textarea:focus,
-        .contact-form select:focus { outline: none; border-color: var(--orange); }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--orange); }
         .contact-form select option { background: var(--dark); }
-        .contact-form textarea { height: 120px; resize: vertical; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .contact-form textarea { height: 100px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-        /* FOOTER */
-        footer {
-            background: #111;
-            color: rgba(255,255,255,0.4);
-            text-align: center;
-            padding: 30px 20px;
-            font-size: 0.85rem;
-        }
-        footer a { color: var(--orange); text-decoration: none; }
+        footer { background: #111; color: rgba(255,255,255,0.4); text-align: center; padding: 25px 20px; font-size: 0.8rem; }
 
-        /* MOBILE */
         .mobile-menu { display: none; cursor: pointer; }
-        .mobile-menu span {
-            display: block; width: 25px; height: 2px;
-            background: white; margin: 6px 0; transition: 0.3s;
-        }
+        .mobile-menu span { display: block; width: 22px; height: 2px; background: white; margin: 5px 0; }
         @media (max-width: 768px) {
             nav ul { display: none; }
             .mobile-menu { display: block; }
             .location-grid, .contact-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .form-row { grid-template-columns: 1fr; }
-            .location-img { height: 300px; }
-            section { padding: 60px 20px; }
-            .hero-logo { width: 140px; }
+            .location-img { height: 250px; }
+            section { padding: 50px 15px; }
+            .hero-logo { width: 130px; }
+            .gallery-item { height: 180px; }
         }
     </style>
 </head>
 <body>
 
+<!-- LANG BAR -->
+<div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('sq')">SQ</button>
+</div>
+
 <!-- NAV -->
 <nav id="navbar">
     <a href="#" class="brand">
         <img src="logo.png" alt="SharreXplor">
-        <span class="brand-text"><span class="b-sharr">SHARR</span><span class="b-explor">EXPLOR</span></span>
+        <span class="brand-text">SHARR<span class="b-explor">EXPLOR</span></span>
     </a>
     <ul>
-        <li><a href="#activities">Activities</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#location">Location</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Book Now</a></li>
+        <li><a href="#activities" data-lang="en" class="show">Activities</a><a href="#activities" data-lang="fr">Activités</a><a href="#activities" data-lang="sq">Aktivitete</a></li>
+        <li><a href="#packages" data-lang="en" class="show">Packages</a><a href="#packages" data-lang="fr">Forfaits</a><a href="#packages" data-lang="sq">Paketat</a></li>
+        <li><a href="#location" data-lang="en" class="show">Location</a><a href="#location" data-lang="fr">Lieu</a><a href="#location" data-lang="sq">Vendndodhja</a></li>
+        <li><a href="#contact" data-lang="en" class="show">Book Now</a><a href="#contact" data-lang="fr">Réserver</a><a href="#contact" data-lang="sq">Rezervo</a></li>
     </ul>
-    <div class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('show')">
-        <span></span><span></span><span></span>
-    </div>
+    <div class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('show')"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero-logo">
-        <img src="logo.png" alt="SharreXplor Adventure">
-    </div>
+    <div class="hero-logo"><img src="logo.png" alt="SharreXplor Adventure"></div>
     <h1><span class="sharr">SHARR</span><span class="explor">EXPLOR</span></h1>
     <div class="tagline">Adventure</div>
     <div class="location">📍 Sharr Mountains · Prizren · Kosovo</div>
-    <div class="cta">
+    <div class="cta" data-lang="en" style="display:flex">
         <a href="#packages" class="btn btn-primary">View Packages</a>
         <a href="#contact" class="btn btn-outline">Book Your Trip</a>
     </div>
-    <div class="scroll-indicator">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2">
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-        </svg>
+    <div class="cta" data-lang="fr">
+        <a href="#packages" class="btn btn-primary">Voir les forfaits</a>
+        <a href="#contact" class="btn btn-outline">Réserver</a>
+    </div>
+    <div class="cta" data-lang="sq">
+        <a href="#packages" class="btn btn-primary">Shiko Paketat</a>
+        <a href="#contact" class="btn btn-outline">Rezervo Udhëtimin</a>
     </div>
 </section>
 
@@ -489,47 +221,69 @@
 <section id="activities">
     <div class="container">
         <div class="section-line"></div>
-        <h2 class="section-title">Choose Your Adventure</h2>
-        <p class="section-subtitle">From adrenaline-pumping enduro rides to peaceful mountain hikes</p>
+        <h2 class="section-title" data-lang="en" class="show">Choose Your Adventure</h2>
+        <h2 class="section-title" data-lang="fr">Choisissez Votre Aventure</h2>
+        <h2 class="section-title" data-lang="sq">Zgjidhni Aventurën Tuaj</h2>
+        <p class="section-subtitle" data-lang="en">From adrenaline-pumping enduro rides to peaceful mountain hikes</p>
+        <p class="section-subtitle" data-lang="fr">Des sorties enduro pleines d'adrénaline aux randonnées paisibles en montagne</p>
+        <p class="section-subtitle" data-lang="sq">Nga vozitjet emocionuese me enduro deri te shëtitjet e qeta në mal</p>
         <div class="activities-grid">
+            <!-- ENDURO -->
             <div class="activity-card">
-                <div class="activity-img" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80')">
-                    <div class="activity-icon">🏍️</div>
-                </div>
+                <div class="activity-img" style="background-image: url('img/enduro.jpg')"></div>
                 <div class="activity-body">
                     <h3>Enduro & Motocross</h3>
-                    <p>Conquer rugged mountain trails on powerful enduro bikes. From beginner-friendly routes to expert-level single tracks through the Sharr wilderness.</p>
-                    <div class="activity-price">FROM 400 CHF / DAY</div>
+                    <p data-lang="en">Conquer rugged mountain trails on powerful enduro bikes. From beginner-friendly routes to expert-level single tracks through the Sharr wilderness.</p>
+                    <p data-lang="fr">Conquérez les sentiers de montagne sur de puissantes motos enduro. Des pistes débutants aux single tracks experts à travers les montagnes de Sharr.</p>
+                    <p data-lang="sq">Pushtoni shtigjet e egra malore me motoçikleta të fuqishme enduro. Nga rrugët për fillestarë deri te gjurmët e vetme për ekspertë nëpër natyrën e Sharrit.</p>
+                    <div class="activity-price" data-lang="en">FROM 400 CHF / DAY</div>
+                    <div class="activity-price" data-lang="fr">DÈS 400 CHF / JOUR</div>
+                    <div class="activity-price" data-lang="sq">NGA 400 CHF / DITË</div>
                 </div>
             </div>
+            <!-- VTT -->
             <div class="activity-card">
-                <div class="activity-img" style="background-image: url('https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=600&q=80')">
-                    <div class="activity-icon">🚵</div>
-                </div>
+                <div class="activity-img" style="background-image: url('img/mtb.jpg')"></div>
                 <div class="activity-body">
-                    <h3>Mountain Biking & E-Bike</h3>
-                    <p>Explore stunning alpine trails on quality MTB or E-Bikes. Scenic descents, forest paths, and panoramic ridgelines await you.</p>
-                    <div class="activity-price">FROM 250 CHF / DAY</div>
+                    <h3 data-lang="en">Mountain Biking & E-Bike</h3>
+                    <h3 data-lang="fr">VTT & E-Bike</h3>
+                    <h3 data-lang="sq">Biçikletë Mali & E-Bike</h3>
+                    <p data-lang="en">Explore stunning alpine trails on quality MTB or E-Bikes. Scenic descents, forest paths, and panoramic ridgelines await you.</p>
+                    <p data-lang="fr">Explorez de superbes sentiers alpins en VTT ou E-Bike. Descentes panoramiques, chemins forestiers et crêtes à couper le souffle.</p>
+                    <p data-lang="sq">Eksploroni shtigje mahnitëse alpine me biçikletë mali ose E-Bike. Zbritje panoramike, shtegje pyjore dhe kreshtë me pamje të mrekullueshme.</p>
+                    <div class="activity-price" data-lang="en">FROM 250 CHF / DAY</div>
+                    <div class="activity-price" data-lang="fr">DÈS 250 CHF / JOUR</div>
+                    <div class="activity-price" data-lang="sq">NGA 250 CHF / DITË</div>
                 </div>
             </div>
+            <!-- RANDO -->
             <div class="activity-card">
-                <div class="activity-img" style="background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80')">
-                    <div class="activity-icon">🥾</div>
-                </div>
+                <div class="activity-img" style="background-image: url('img/hiking.jpg')"></div>
                 <div class="activity-body">
-                    <h3>Hiking & Trekking</h3>
-                    <p>Discover ancient shepherd trails, alpine meadows, and breathtaking summit views. Routes for all fitness levels with expert local guides.</p>
-                    <div class="activity-price">FROM 250 CHF / DAY</div>
+                    <h3 data-lang="en">Hiking & Trekking</h3>
+                    <h3 data-lang="fr">Randonnée & Trekking</h3>
+                    <h3 data-lang="sq">Ecje & Trekking</h3>
+                    <p data-lang="en">Discover ancient shepherd trails, alpine meadows, and breathtaking summit views. Routes for all fitness levels with expert local guides.</p>
+                    <p data-lang="fr">Découvrez d'anciens sentiers de bergers, des prairies alpines et des vues au sommet à couper le souffle. Parcours pour tous niveaux avec guides locaux experts.</p>
+                    <p data-lang="sq">Zbuloni shtigjet e lashta të bariut, livadhet alpine dhe pamjet mahnitëse nga majat. Rrugë për të gjitha nivelet me udhërrëfyes lokalë ekspertë.</p>
+                    <div class="activity-price" data-lang="en">FROM 250 CHF / DAY</div>
+                    <div class="activity-price" data-lang="fr">DÈS 250 CHF / JOUR</div>
+                    <div class="activity-price" data-lang="sq">NGA 250 CHF / DITË</div>
                 </div>
             </div>
+            <!-- SKI -->
             <div class="activity-card">
-                <div class="activity-img" style="background-image: url('https://images.unsplash.com/photo-1565992441121-4367c2967103?w=600&q=80')">
-                    <div class="activity-icon">⛷️</div>
-                </div>
+                <div class="activity-img" style="background-image: url('img/ski.jpg')"></div>
                 <div class="activity-body">
-                    <h3>Ski Touring & Snowshoe</h3>
-                    <p>Winter adventures in pristine powder. Skin up untouched slopes and enjoy epic descents in the heart of the Sharr Mountains.</p>
-                    <div class="activity-price">FROM 250 CHF / DAY</div>
+                    <h3 data-lang="en">Ski Touring & Snowshoe</h3>
+                    <h3 data-lang="fr">Ski de Randonnée & Raquettes</h3>
+                    <h3 data-lang="sq">Ski Turne & Këpucë Bore</h3>
+                    <p data-lang="en">Winter adventures in pristine powder. Skin up untouched slopes and enjoy epic descents in the heart of the Sharr Mountains.</p>
+                    <p data-lang="fr">Aventures hivernales dans la poudreuse vierge. Montez en peaux de phoque et profitez de descentes épiques au cœur des montagnes de Sharr.</p>
+                    <p data-lang="sq">Aventura dimërore në borë të paprekur. Ngjituni me lëkurë dhe shijoni zbritje epike në zemrën e Maleve të Sharrit.</p>
+                    <div class="activity-price" data-lang="en">FROM 250 CHF / DAY</div>
+                    <div class="activity-price" data-lang="fr">DÈS 250 CHF / JOUR</div>
+                    <div class="activity-price" data-lang="sq">NGA 250 CHF / DITË</div>
                 </div>
             </div>
         </div>
@@ -540,54 +294,70 @@
 <section id="packages">
     <div class="container">
         <div class="section-line"></div>
-        <h2 class="section-title">Packages</h2>
-        <p class="section-subtitle">All-inclusive adventures — minimum 3 days</p>
+        <h2 class="section-title" data-lang="en">Packages</h2>
+        <h2 class="section-title" data-lang="fr">Forfaits</h2>
+        <h2 class="section-title" data-lang="sq">Paketat</h2>
+        <p class="section-subtitle" data-lang="en">All-inclusive adventures — minimum 3 days</p>
+        <p class="section-subtitle" data-lang="fr">Aventures tout compris — minimum 3 jours</p>
+        <p class="section-subtitle" data-lang="sq">Aventura gjithëpërfshirëse — minimumi 3 ditë</p>
         <div class="packages-grid">
             <div class="package-card">
-                <div class="package-name">Active Package</div>
+                <div class="package-name" data-lang="en">Active Package</div>
+                <div class="package-name" data-lang="fr">Forfait Actif</div>
+                <div class="package-name" data-lang="sq">Paketa Aktive</div>
                 <div class="package-price">250 <span>CHF</span></div>
-                <div class="package-period">per person / per day</div>
+                <div class="package-period" data-lang="en">per person / per day</div>
+                <div class="package-period" data-lang="fr">par personne / par jour</div>
+                <div class="package-period" data-lang="sq">për person / për ditë</div>
                 <ul class="package-features">
-                    <li>Professional mountain guide</li>
-                    <li>Hotel accommodation</li>
-                    <li>All meals included</li>
-                    <li>Equipment rental (hiking / snow gear)</li>
-                    <li>MTB or E-Bike rental</li>
-                    <li>Airport & local transfers</li>
-                    <li>Tourist visits on request</li>
+                    <li data-lang="en">Professional mountain guide</li><li data-lang="fr">Guide de montagne professionnel</li><li data-lang="sq">Udhërrëfyes profesional mali</li>
+                    <li data-lang="en">Hotel accommodation</li><li data-lang="fr">Hébergement hôtel</li><li data-lang="sq">Akomodim në hotel</li>
+                    <li data-lang="en">All meals included</li><li data-lang="fr">Tous les repas inclus</li><li data-lang="sq">Të gjitha vaktet e përfshira</li>
+                    <li data-lang="en">Equipment rental</li><li data-lang="fr">Location d'équipement</li><li data-lang="sq">Qira e pajisjeve</li>
+                    <li data-lang="en">MTB or E-Bike rental</li><li data-lang="fr">Location VTT ou E-Bike</li><li data-lang="sq">Qira biçiklete mali ose E-Bike</li>
+                    <li data-lang="en">Airport & local transfers</li><li data-lang="fr">Transferts aéroport & locaux</li><li data-lang="sq">Transferta nga aeroporti & lokale</li>
                 </ul>
-                <a href="#contact" class="btn btn-outline" style="color: var(--orange); border-color: var(--orange);">Book Now</a>
+                <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="en">Book Now</a>
+                <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="fr">Réserver</a>
+                <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="sq">Rezervo</a>
             </div>
-            <div class="package-card featured">
+            <div class="package-card featured" data-badge="MOST POPULAR">
                 <div class="package-name">Full Enduro</div>
                 <div class="package-price">400 <span>CHF</span></div>
-                <div class="package-period">per person / per day</div>
+                <div class="package-period" data-lang="en">per person / per day</div>
+                <div class="package-period" data-lang="fr">par personne / par jour</div>
+                <div class="package-period" data-lang="sq">për person / për ditë</div>
                 <ul class="package-features">
-                    <li>Enduro / Motocross bike rental</li>
-                    <li>Professional mountain guide</li>
-                    <li>Hotel accommodation</li>
-                    <li>All meals included</li>
-                    <li>Full riding equipment</li>
-                    <li>Airport & local transfers</li>
-                    <li>Tourist visits on request</li>
-                    <li>Traditional lamb roast option 🐑</li>
+                    <li data-lang="en">Enduro / Motocross bike rental</li><li data-lang="fr">Location moto enduro / motocross</li><li data-lang="sq">Qira motoçiklete enduro / motocross</li>
+                    <li data-lang="en">Professional mountain guide</li><li data-lang="fr">Guide de montagne professionnel</li><li data-lang="sq">Udhërrëfyes profesional mali</li>
+                    <li data-lang="en">Hotel accommodation</li><li data-lang="fr">Hébergement hôtel</li><li data-lang="sq">Akomodim në hotel</li>
+                    <li data-lang="en">All meals included</li><li data-lang="fr">Tous les repas inclus</li><li data-lang="sq">Të gjitha vaktet e përfshira</li>
+                    <li data-lang="en">Full riding equipment</li><li data-lang="fr">Équipement complet de pilotage</li><li data-lang="sq">Pajisje të plota për vozitje</li>
+                    <li data-lang="en">Airport & local transfers</li><li data-lang="fr">Transferts aéroport & locaux</li><li data-lang="sq">Transferta nga aeroporti & lokale</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary">Book Now</a>
+                <a href="#contact" class="btn btn-primary" data-lang="en">Book Now</a>
+                <a href="#contact" class="btn btn-primary" data-lang="fr">Réserver</a>
+                <a href="#contact" class="btn btn-primary" data-lang="sq">Rezervo</a>
             </div>
             <div class="package-card">
                 <div class="package-name">Custom</div>
-                <div class="package-price">À la carte</div>
-                <div class="package-period">build your own adventure</div>
+                <div class="package-price" data-lang="en">À la carte</div>
+                <div class="package-price" data-lang="fr">À la carte</div>
+                <div class="package-price" data-lang="sq">Sipas dëshirës</div>
+                <div class="package-period" data-lang="en">build your own adventure</div>
+                <div class="package-period" data-lang="fr">créez votre aventure</div>
+                <div class="package-period" data-lang="sq">ndërtoni aventurën tuaj</div>
                 <ul class="package-features">
-                    <li>Hotel — 50 CHF / day</li>
-                    <li>Meals — 50 CHF / day</li>
-                    <li>Guide — 100 CHF / day</li>
-                    <li>Enduro bike — 200 CHF / day</li>
-                    <li>MTB / E-Bike — 50 CHF / day</li>
-                    <li>Equipment — 50 CHF / day</li>
-                    <li>Mix & match activities</li>
+                    <li>Hotel — 50 CHF</li>
+                    <li data-lang="en">Meals — 50 CHF</li><li data-lang="fr">Repas — 50 CHF</li><li data-lang="sq">Vaktet — 50 CHF</li>
+                    <li>Guide — 100 CHF</li>
+                    <li>Enduro — 200 CHF</li>
+                    <li>MTB / E-Bike — 50 CHF</li>
+                    <li data-lang="en">Equipment — 50 CHF</li><li data-lang="fr">Équipement — 50 CHF</li><li data-lang="sq">Pajisje — 50 CHF</li>
                 </ul>
-                <a href="#contact" class="btn btn-outline" style="color: var(--orange); border-color: var(--orange);">Contact Us</a>
+                <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="en">Contact Us</a>
+                <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="fr">Contactez-nous</a>
+                <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="sq">Na kontaktoni</a>
             </div>
         </div>
     </div>
@@ -598,15 +368,33 @@
     <div class="container">
         <div class="location-grid">
             <div class="location-text">
-                <div class="section-line" style="margin: 0 0 20px;"></div>
-                <h3>Sharr Mountains, Kosovo</h3>
-                <p>Nestled in the heart of the Balkans, the Sharr Mountains offer some of Europe's last truly wild landscapes. From the historic city of Prizren to the untouched alpine peaks, this is adventure in its purest form.</p>
-                <p>Our base in <strong>Donje Ljubinje</strong> puts you right at the gateway to endless trails, mountain passes, and breathtaking scenery that few tourists ever see.</p>
-                <div class="location-highlights">
-                    <div class="highlight"><div class="highlight-icon">🏔️</div><span>Peaks up to 2,700m</span></div>
-                    <div class="highlight"><div class="highlight-icon">🌲</div><span>Pristine nature</span></div>
-                    <div class="highlight"><div class="highlight-icon">🍖</div><span>Traditional cuisine</span></div>
-                    <div class="highlight"><div class="highlight-icon">✈️</div><span>Airport transfers</span></div>
+                <div class="section-line" style="margin:0 0 18px;"></div>
+                <h3 data-lang="en">Sharr Mountains, Kosovo</h3>
+                <h3 data-lang="fr">Montagnes de Sharr, Kosovo</h3>
+                <h3 data-lang="sq">Malet e Sharrit, Kosovë</h3>
+                <p data-lang="en">Nestled in the heart of the Balkans, the Sharr Mountains offer some of Europe's last truly wild landscapes. From the historic city of Prizren to the untouched alpine peaks, this is adventure in its purest form.</p>
+                <p data-lang="fr">Nichées au cœur des Balkans, les montagnes de Sharr offrent l'un des derniers paysages sauvages d'Europe. De la ville historique de Prizren aux sommets alpins vierges, c'est l'aventure à l'état pur.</p>
+                <p data-lang="sq">Të vendosura në zemrën e Ballkanit, Malet e Sharrit ofrojnë disa nga peizazhet e fundit vërtet të egra të Evropës. Nga qyteti historik i Prizrenit deri te majat alpine të paprekura, kjo është aventura në formën e saj më të pastër.</p>
+                <p data-lang="en">Our base in <strong>Donje Ljubinje</strong> puts you right at the gateway to endless trails, mountain passes, and breathtaking scenery.</p>
+                <p data-lang="fr">Notre base à <strong>Donje Ljubinje</strong> vous place directement à l'entrée de sentiers infinis, cols de montagne et panoramas à couper le souffle.</p>
+                <p data-lang="sq">Baza jonë në <strong>Donje Ljubinje</strong> ju vendos drejtpërdrejt në hyrjen e shtigjeve të pafundme, qafave malore dhe peizazheve mahnitëse.</p>
+                <div class="location-highlights" data-lang="en">
+                    <div class="highlight"><div class="highlight-dot"></div><span>Peaks up to 2,700m</span></div>
+                    <div class="highlight"><div class="highlight-dot"></div><span>Pristine nature</span></div>
+                    <div class="highlight"><div class="highlight-dot"></div><span>Traditional cuisine</span></div>
+                    <div class="highlight"><div class="highlight-dot"></div><span>Airport transfers</span></div>
+                </div>
+                <div class="location-highlights" data-lang="fr">
+                    <div class="highlight"><div class="highlight-dot"></div><span>Sommets jusqu'à 2 700 m</span></div>
+                    <div class="highlight"><div class="highlight-dot"></div><span>Nature préservée</span></div>
+                    <div class="highlight"><div class="highlight-dot"></div><span>Cuisine traditionnelle</span></div>
+                    <div class="highlight"><div class="highlight-dot"></div><span>Transferts aéroport</span></div>
+                </div>
+                <div class="location-highlights" data-lang="sq">
+                    <div class="highlight"><div class="highlight-dot"></div><span>Maja deri në 2 700m</span></div>
+                    <div class="highlight"><div class="highlight-dot"></div><span>Natyrë e paprekur</span></div>
+                    <div class="highlight"><div class="highlight-dot"></div><span>Kuzhinë tradicionale</span></div>
+                    <div class="highlight"><div class="highlight-dot"></div><span>Transferta nga aeroporti</span></div>
                 </div>
             </div>
             <div class="location-img"></div>
@@ -615,16 +403,16 @@
 </section>
 
 <!-- GALLERY -->
-<section id="gallery" style="padding: 0;">
+<section id="gallery" style="padding:0;">
     <div class="gallery-grid">
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&q=80')"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=500&q=80')"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=500&q=80')"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=80')"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=500&q=80')"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1565992441121-4367c2967103?w=500&q=80')"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=500&q=80')"></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=500&q=80')"></div>
+        <div class="gallery-item" style="background-image: url('img/g1.jpg')"></div>
+        <div class="gallery-item" style="background-image: url('img/g2.jpg')"></div>
+        <div class="gallery-item" style="background-image: url('img/g3.jpg')"></div>
+        <div class="gallery-item" style="background-image: url('img/g4.jpg')"></div>
+        <div class="gallery-item" style="background-image: url('img/g5.jpg')"></div>
+        <div class="gallery-item" style="background-image: url('img/g6.jpg')"></div>
+        <div class="gallery-item" style="background-image: url('img/g7.jpg')"></div>
+        <div class="gallery-item" style="background-image: url('img/g8.jpg')"></div>
     </div>
 </section>
 
@@ -632,52 +420,74 @@
 <section id="contact">
     <div class="container">
         <div class="section-line"></div>
-        <h2 class="section-title">Book Your Adventure</h2>
-        <p class="section-subtitle">Minimum 3 days — we'll build the perfect trip for you</p>
+        <h2 class="section-title" data-lang="en">Book Your Adventure</h2>
+        <h2 class="section-title" data-lang="fr">Réservez Votre Aventure</h2>
+        <h2 class="section-title" data-lang="sq">Rezervoni Aventurën Tuaj</h2>
+        <p class="section-subtitle" data-lang="en">Minimum 3 days — we'll build the perfect trip for you</p>
+        <p class="section-subtitle" data-lang="fr">Minimum 3 jours — nous construisons le voyage parfait pour vous</p>
+        <p class="section-subtitle" data-lang="sq">Minimumi 3 ditë — ne ndërtojmë udhëtimin perfekt për ju</p>
         <div class="contact-grid">
             <div class="contact-info">
-                <h3>Get in Touch</h3>
-                <p>Ready to explore the wild side of Kosovo? Contact us to plan your custom adventure in the Sharr Mountains.</p>
+                <h3 data-lang="en">Get in Touch</h3>
+                <h3 data-lang="fr">Contactez-nous</h3>
+                <h3 data-lang="sq">Na Kontaktoni</h3>
+                <p data-lang="en">Ready to explore the wild side of Kosovo? Contact us to plan your custom adventure in the Sharr Mountains.</p>
+                <p data-lang="fr">Prêt à explorer le côté sauvage du Kosovo ? Contactez-nous pour planifier votre aventure sur-mesure dans les montagnes de Sharr.</p>
+                <p data-lang="sq">Gati të eksploroni anën e egër të Kosovës? Na kontaktoni për të planifikuar aventurën tuaj në Malet e Sharrit.</p>
                 <div class="contact-detail"><span>📍</span> Donje Ljubinje, Prizren, Kosovo</div>
                 <div class="contact-detail"><span>📧</span> info@sharrexplor.com</div>
                 <div class="contact-detail"><span>📱</span> +383 XX XXX XXXX</div>
                 <div class="contact-detail"><span>📸</span> @sharrexplor</div>
-                <h3 style="margin-top: 30px;">What's Included</h3>
-                <p>Every package includes airport pickup, comfortable hotel accommodation, all meals with local cuisine, professional bilingual guides, and full equipment for your chosen activity.</p>
             </div>
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon.');">
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! / Merci ! / Faleminderit!');">
                 <div class="form-row">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
+                    <input type="text" placeholder="Full Name / Nom / Emri" required>
+                    <input type="email" placeholder="Email" required>
                 </div>
                 <div class="form-row">
-                    <input type="tel" placeholder="Phone Number">
-                    <input type="number" placeholder="Number of People" min="1">
+                    <input type="tel" placeholder="Phone / Téléphone / Telefoni">
+                    <input type="number" placeholder="People / Personnes / Persona" min="1">
                 </div>
                 <div class="form-row">
                     <select>
-                        <option value="">Select Package</option>
+                        <option value="">Package / Forfait / Paketa</option>
                         <option>Full Enduro — 400 CHF/day</option>
                         <option>Active (Hiking/MTB) — 250 CHF/day</option>
                         <option>Custom — À la carte</option>
                     </select>
-                    <input type="number" placeholder="Number of Days" min="3">
+                    <input type="number" placeholder="Days / Jours / Ditë" min="3">
                 </div>
-                <textarea placeholder="Tell us about your dream adventure..."></textarea>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
+                <textarea placeholder="Tell us about your dream adventure... / Décrivez votre aventure rêvée... / Na tregoni për aventurën tuaj të ëndrrave..."></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;" data-lang="en">Send Request</button>
+                <button type="submit" class="btn btn-primary" style="width:100%;" data-lang="fr">Envoyer la demande</button>
+                <button type="submit" class="btn btn-primary" style="width:100%;" data-lang="sq">Dërgo Kërkesën</button>
             </form>
         </div>
     </div>
 </section>
 
-<footer>
-    <p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo · Built with ❤️</p>
-</footer>
+<footer><p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo</p></footer>
 
 <script>
+    // Nav scroll
     window.addEventListener('scroll', () => {
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
+
+    // Language switcher
+    function setLang(lang) {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+        document.querySelectorAll('[data-lang]').forEach(el => {
+            el.classList.toggle('show', el.dataset.lang === lang);
+        });
+        // Show elements without data-lang (always visible)
+        document.querySelectorAll('.cta[data-lang]').forEach(el => {
+            el.style.display = el.dataset.lang === lang ? 'flex' : 'none';
+        });
+    }
+    // Init
+    setLang('en');
 </script>
 
 </body>
