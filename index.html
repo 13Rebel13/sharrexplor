@@ -35,27 +35,25 @@
             color: var(--white);
         }
         .hero-logo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 200px;
             margin-bottom: 30px;
-            border: 2px solid rgba(255,255,255,0.2);
         }
-        .hero-logo svg { width: 80px; height: 80px; }
+        .hero-logo img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+        }
         .hero h1 {
             font-family: 'Oswald', sans-serif;
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 700;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
             text-transform: uppercase;
             line-height: 1;
         }
-        .hero h1 span { color: var(--orange); }
+        .hero h1 .sharr { color: var(--white); }
+        .hero h1 .dot { color: var(--orange); margin: 0 4px; font-size: 0.6em; vertical-align: middle; }
+        .hero h1 .explor { color: var(--orange); }
         .hero .tagline {
             font-family: 'Oswald', sans-serif;
             font-size: clamp(1rem, 3vw, 1.5rem);
@@ -90,16 +88,9 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        .btn-primary {
-            background: var(--orange);
-            color: var(--white);
-        }
+        .btn-primary { background: var(--orange); color: var(--white); }
         .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255,255,255,0.5);
-        }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); }
         .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
 
         .scroll-indicator {
@@ -133,19 +124,26 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
         nav .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        nav .brand img {
+            height: 45px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        nav .brand-text {
             font-family: 'Oswald', sans-serif;
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--white);
-            text-decoration: none;
             letter-spacing: 2px;
         }
-        nav .brand span { color: var(--orange); }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
+        nav .brand-text .b-sharr { color: var(--white); }
+        nav .brand-text .b-explor { color: var(--orange); }
+        nav ul { list-style: none; display: flex; gap: 30px; }
         nav ul a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
@@ -204,18 +202,14 @@
         .activity-img::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             height: 100px;
             background: linear-gradient(transparent, rgba(0,0,0,0.3));
         }
         .activity-icon {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 50px;
-            height: 50px;
+            top: 15px; right: 15px;
+            width: 50px; height: 50px;
             background: var(--orange);
             border-radius: 50%;
             display: flex;
@@ -268,8 +262,7 @@
         .package-card.featured::before {
             content: 'MOST POPULAR';
             position: absolute;
-            top: -12px;
-            left: 50%;
+            top: -12px; left: 50%;
             transform: translateX(-50%);
             background: var(--orange);
             color: var(--white);
@@ -298,11 +291,7 @@
             font-size: 0.85rem;
             margin-bottom: 25px;
         }
-        .package-features {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 30px;
-        }
+        .package-features { list-style: none; text-align: left; margin-bottom: 30px; }
         .package-features li {
             padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -316,7 +305,7 @@
             margin-right: 10px;
         }
 
-        /* ABOUT / LOCATION */
+        /* LOCATION */
         #location { background: var(--light); }
         .location-grid {
             display: grid;
@@ -346,8 +335,7 @@
             color: #555;
         }
         .highlight-icon {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             background: var(--orange);
             border-radius: 50%;
             display: flex;
@@ -401,11 +389,7 @@
             margin-bottom: 20px;
             color: var(--orange);
         }
-        .contact-info p {
-            color: rgba(255,255,255,0.6);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
+        .contact-info p { color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 20px; }
         .contact-detail {
             display: flex;
             align-items: center;
@@ -429,10 +413,7 @@
         }
         .contact-form input:focus,
         .contact-form textarea:focus,
-        .contact-form select:focus {
-            outline: none;
-            border-color: var(--orange);
-        }
+        .contact-form select:focus { outline: none; border-color: var(--orange); }
         .contact-form select option { background: var(--dark); }
         .contact-form textarea { height: 120px; resize: vertical; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -450,23 +431,18 @@
         /* MOBILE */
         .mobile-menu { display: none; cursor: pointer; }
         .mobile-menu span {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background: white;
-            margin: 6px 0;
-            transition: 0.3s;
+            display: block; width: 25px; height: 2px;
+            background: white; margin: 6px 0; transition: 0.3s;
         }
-
         @media (max-width: 768px) {
             nav ul { display: none; }
             .mobile-menu { display: block; }
-            .location-grid,
-            .contact-grid { grid-template-columns: 1fr; }
+            .location-grid, .contact-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .form-row { grid-template-columns: 1fr; }
             .location-img { height: 300px; }
             section { padding: 60px 20px; }
+            .hero-logo { width: 140px; }
         }
     </style>
 </head>
@@ -474,7 +450,10 @@
 
 <!-- NAV -->
 <nav id="navbar">
-    <a href="#" class="brand">SHARRE<span>XPLOR</span></a>
+    <a href="#" class="brand">
+        <img src="logo.png" alt="SharreXplor">
+        <span class="brand-text"><span class="b-sharr">SHARR</span><span class="b-explor">EXPLOR</span></span>
+    </a>
     <ul>
         <li><a href="#activities">Activities</a></li>
         <li><a href="#packages">Packages</a></li>
@@ -490,13 +469,9 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-logo">
-        <svg viewBox="0 0 100 80" fill="white">
-            <polygon points="20,70 40,25 60,70" opacity="0.6"/>
-            <polygon points="35,70 55,15 75,70" fill="#E8611A"/>
-            <polygon points="55,15 50,28 60,28" fill="white" opacity="0.8"/>
-        </svg>
+        <img src="logo.png" alt="SharreXplor Adventure">
     </div>
-    <h1>SHARRE<span>XPLOR</span></h1>
+    <h1><span class="sharr">SHARR</span><span class="explor">EXPLOR</span></h1>
     <div class="tagline">Adventure</div>
     <div class="location">📍 Sharr Mountains · Prizren · Kosovo</div>
     <div class="cta">
@@ -628,25 +603,13 @@
                 <p>Nestled in the heart of the Balkans, the Sharr Mountains offer some of Europe's last truly wild landscapes. From the historic city of Prizren to the untouched alpine peaks, this is adventure in its purest form.</p>
                 <p>Our base in <strong>Donje Ljubinje</strong> puts you right at the gateway to endless trails, mountain passes, and breathtaking scenery that few tourists ever see.</p>
                 <div class="location-highlights">
-                    <div class="highlight">
-                        <div class="highlight-icon">🏔️</div>
-                        <span>Peaks up to 2,700m</span>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight-icon">🌲</div>
-                        <span>Pristine nature</span>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight-icon">🍖</div>
-                        <span>Traditional cuisine</span>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight-icon">✈️</div>
-                        <span>Airport transfers</span>
-                    </div>
+                    <div class="highlight"><div class="highlight-icon">🏔️</div><span>Peaks up to 2,700m</span></div>
+                    <div class="highlight"><div class="highlight-icon">🌲</div><span>Pristine nature</span></div>
+                    <div class="highlight"><div class="highlight-icon">🍖</div><span>Traditional cuisine</span></div>
+                    <div class="highlight"><div class="highlight-icon">✈️</div><span>Airport transfers</span></div>
                 </div>
             </div>
-            <div class="location-img" style="border: 0;"></div>
+            <div class="location-img"></div>
         </div>
     </div>
 </section>
@@ -707,13 +670,11 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo · Built with ❤️</p>
 </footer>
 
 <script>
-    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
