@@ -11,7 +11,7 @@
         body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
 
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 100;
+            position: fixed; top: 28px; width: 100%; z-index: 100;
             background: rgba(26,26,26,0.95); backdrop-filter: blur(10px);
             padding: 12px 30px; display: flex; justify-content: space-between;
             align-items: center; box-shadow: 0 2px 20px rgba(0,0,0,0.3);
@@ -25,7 +25,7 @@
         nav ul a:hover, nav ul a.active { color: var(--orange); }
 
         .page-header {
-            padding: 120px 20px 60px; text-align: center;
+            padding: 148px 20px 60px; text-align: center;
             background: linear-gradient(135deg, rgba(26,26,26,0.85), rgba(26,26,26,0.7)),
                         url('img/hero.jpg') center/cover; color: var(--white);
         }
@@ -110,9 +110,19 @@
         }
 
         footer { background: #111; color: rgba(255,255,255,0.4); text-align: center; padding: 25px 20px; font-size: 0.8rem; }
+    .lang-bar { position: fixed; top: 28px; width: 100%; z-index: 200; background: var(--dark); display: flex; justify-content: flex-end; padding: 5px 20px; gap: 10px; }
+        .lang-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 3px 12px; font-size: 0.75rem; cursor: pointer; letter-spacing: 1px; font-family: 'Inter', sans-serif; transition: all 0.3s; }
+        .lang-btn.active, .lang-btn:hover { color: var(--orange); border-color: var(--orange); }
     </style>
 </head>
 <body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('sq')">SQ</button>
+</div>
 
 <nav>
     <a href="index.html" class="brand">
@@ -216,5 +226,14 @@
 
 <footer><p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo</p></footer>
 
+<script>
+function setLang(lang) {
+    document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
+    document.querySelector(".lang-btn[onclick*="" + lang + ""]").classList.add("active");
+    localStorage.setItem("sharrexplor-lang", lang);
+}
+var savedLang = localStorage.getItem("sharrexplor-lang");
+if (savedLang) { setLang(savedLang); }
+</script>
 </body>
 </html>

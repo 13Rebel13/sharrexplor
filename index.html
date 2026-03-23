@@ -511,11 +511,12 @@
                 el.style.display = 'none';
                 el.classList.remove('show');
             }
+            }
         });
     }
     // Init on load
     document.addEventListener('DOMContentLoaded', function() { setLang('en'); });
-    setLang('en');
+    var savedLang = localStorage.getItem('sharrexplor-lang') || 'en'; setLang(savedLang);
 </script>
 
 </body>
