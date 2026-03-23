@@ -53,7 +53,7 @@
         <li><a href="../gallery.html" data-tr="gallery">Gallery</a></li>
         <li><a href="../blog.html">Blog</a></li>
         <li><a href="../index.html#packages" data-tr="packages">Packages</a></li>
-        <li><a href="../index.html#contact" data-tr="book">Book Now</a></li>
+        <li><a href="../index.html#contact" data-tr="book" data-lang="en">Book Now</a><a href="../index.html#contact" class="btn" data-lang="fr" style="display:none">Réserver</a><a href="../index.html#contact" class="btn" data-lang="sq" style="display:none">Rezervo</a></li>
         <li class="lang-dropdown">
             <a href="#" class="lang-trigger" onclick="event.preventDefault(); document.querySelector('.lang-menu').classList.toggle('open');">🌐 <span id="current-lang">EN</span> ▾</a>
             <div class="lang-menu">
@@ -67,12 +67,13 @@
 </nav>
 <div class="article-hero">
     <div class="article-hero-content">
-        <span class="tag">Hiking</span>
-        <h1>A Beginner's Guide to Trekking in Kosovo</h1>
+        <span class="tag" data-lang="en">Hiking</span><span class="tag" data-lang="fr" style="display:none">Randonnée</span><span class="tag" data-lang="sq" style="display:none">Ecje</span>
+        <h1 data-lang="en">A Beginner's Guide to Trekking in Kosovo</h1><h1 data-lang="fr" style="display:none">Guide du débutant pour le trekking au Kosovo</h1><h1 data-lang="sq" style="display:none">Udhëzues për fillestarë për trekking në Kosovë</h1>
         <div class="meta">March 15, 2026 · 6 min read</div>
     </div>
 </div>
 <div class="article-body">
+<div data-lang="en">
 <p>Kosovo remains one of Europe's best-kept secrets for hikers. While the Alps overflow with tourists and the Dolomites require reservations months in advance, the Sharr Mountains offer world-class trekking with almost no crowds.</p>
 
 <h2>Why Kosovo?</h2>
@@ -91,12 +92,48 @@
 
 <h2>Our Hiking Package</h2>
 <p>At 200 CHF per day, our hiking package includes everything: professional guide, comfortable hotel, all meals with local cuisine, equipment, and transfers. Minimum three days — because you'll want at least that long once you see what's out here.</p>
-<div class="cta-box">
-    <h3>Ready for Your Own Adventure?</h3>
-    <p>Book your trip to the Sharr Mountains today</p>
-    <a href="../index.html#contact" class="btn">Book Now</a>
 </div>
-<a href="../blog.html" class="back-link">← Back to Blog</a>
+<div data-lang="fr" style="display:none">
+<p>Le Kosovo reste l'un des secrets les mieux gardés d'Europe pour les randonneurs. Alors que les Alpes débordent de touristes, les montagnes de Sharr offrent un trekking de classe mondiale sans presque aucune foule.</p>
+
+<h2>Pourquoi le Kosovo ?</h2>
+<p>Imaginez : des prairies alpines tapissées de fleurs sauvages, des sommets atteignant 2 700 mètres, d'anciens sentiers de bergers reliant des villages reculés, et une culture accueillante qui traite chaque visiteur comme un membre de la famille.</p>
+
+<h2>Meilleure saison</h2>
+<p>La saison de trekking s'étend de mai à octobre. Juin et septembre offrent le meilleur compromis entre météo et fréquentation.</p>
+
+<h2>Que mettre dans son sac</h2>
+<p>De bonnes chaussures de randonnée sont essentielles. Habillez-vous en couches, emportez une veste de pluie, de la protection solaire et au moins 2 litres d'eau par personne.</p>
+
+<blockquote>"Nous sommes venus pour trois jours et sommes restés une semaine. Les montagnes sont magnifiques, mais ce sont les gens et la nourriture qui nous ont fait tomber amoureux." — Sarah & Tom, Allemagne</blockquote>
+
+<h2>Ai-je besoin d'un guide ?</h2>
+<p>Nous recommandons fortement de randonner avec un guide local. Ils connaissent la météo, les points de vue cachés et les meilleurs endroits pour un déjeuner traditionnel en montagne.</p>
+
+<h2>Notre forfait randonnée</h2>
+<p>À 200 CHF par jour, notre forfait comprend tout : guide professionnel, hôtel confortable, tous les repas, équipement et transferts. Minimum trois jours.</p>
+</div>
+<div data-lang="sq" style="display:none">
+<p>Kosova mbetet një nga sekretet më të ruajtura të Evropës për ecësit. Malet e Sharrit ofrojnë trekking të klasit botëror pa pothuajse asnjë turmë.</p>
+
+<h2>Pse Kosova?</h2>
+<p>Imagjinoni: livadhe alpine me lule të egra, maja deri në 2,700 metra, shtigje të lashta barinjsh dhe kulturë mikpritëse.</p>
+
+<h2>Sezoni më i mirë</h2>
+<p>Sezoni i trekkingut zgjat nga maji deri në tetor.</p>
+
+<h2>Çfarë të paketoni</h2>
+<p>Këpucë të mira ecjeje janë thelbësore. Vishuni me shtresa dhe merrni së paku 2 litra ujë.</p>
+
+<h2>Paketa jonë e ecjes</h2>
+<p>Me 200 CHF në ditë, paketa jonë përfshin gjithçka: udhërrëfyes, hotel, vaktet, pajisjet dhe transfertat.</p>
+</div>
+<div class="cta-box">
+    <h3 data-lang="en">Ready for Your Own Adventure?</h3><h3 data-lang="fr" style="display:none">Prêt pour votre propre aventure ?</h3><h3 data-lang="sq" style="display:none">Gati për aventurën tuaj?</h3>
+    <p data-lang="en">Book your trip to the Sharr Mountains today</p><p data-lang="fr" style="display:none">Réservez votre voyage dans les montagnes de Sharr</p><p data-lang="sq" style="display:none">Rezervoni udhëtimin tuaj në Malet e Sharrit</p>
+    <a href="../index.html#contact" class="btn" data-lang="en">Book Now</a><a href="../index.html#contact" class="btn" data-lang="fr" style="display:none">Réserver</a><a href="../index.html#contact" class="btn" data-lang="sq" style="display:none">Rezervo</a>
+</div>
+<a href="../blog.html" class="back-link" data-lang="en">← Back to Blog</a><a href="../blog.html" class="back-link" data-lang="fr" style="display:none">← Retour au Blog</a><a href="../blog.html" class="back-link" data-lang="sq" style="display:none">← Kthehu te Blogu</a>
 </div>
 <footer><p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo</p></footer>
 <script>

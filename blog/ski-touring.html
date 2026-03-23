@@ -53,7 +53,7 @@
         <li><a href="../gallery.html" data-tr="gallery">Gallery</a></li>
         <li><a href="../blog.html">Blog</a></li>
         <li><a href="../index.html#packages" data-tr="packages">Packages</a></li>
-        <li><a href="../index.html#contact" data-tr="book">Book Now</a></li>
+        <li><a href="../index.html#contact" data-tr="book" data-lang="en">Book Now</a><a href="../index.html#contact" class="btn" data-lang="fr" style="display:none">Réserver</a><a href="../index.html#contact" class="btn" data-lang="sq" style="display:none">Rezervo</a></li>
         <li class="lang-dropdown">
             <a href="#" class="lang-trigger" onclick="event.preventDefault(); document.querySelector('.lang-menu').classList.toggle('open');">🌐 <span id="current-lang">EN</span> ▾</a>
             <div class="lang-menu">
@@ -67,12 +67,13 @@
 </nav>
 <div class="article-hero">
     <div class="article-hero-content">
-        <span class="tag">Winter</span>
-        <h1>Ski Touring in the Sharr: Europe's Hidden Powder Paradise</h1>
+        <span class="tag" data-lang="en">Winter</span><span class="tag" data-lang="fr" style="display:none">Hiver</span><span class="tag" data-lang="sq" style="display:none">Dimër</span>
+        <h1 data-lang="en">Ski Touring in the Sharr: Europe's Hidden Powder Paradise</h1><h1 data-lang="fr" style="display:none">Ski de rando dans le Sharr : le paradis caché de la poudreuse</h1><h1 data-lang="sq" style="display:none">Ski turne në Sharr: parajsa e fshehur e borës në Evropë</h1>
         <div class="meta">February 28, 2026 · 6 min read</div>
     </div>
 </div>
 <div class="article-body">
+<div data-lang="en">
 <p>Every winter, while skiers queue for overcrowded lifts in the Alps, the Sharr Mountains sit quietly under meters of untouched powder. No lift lines. No crowds. No groomed runs. Just pure, raw ski touring in one of Europe's last truly wild mountain ranges.</p>
 
 <h2>The Snow</h2>
@@ -88,12 +89,42 @@
 
 <h2>Our Winter Package</h2>
 <p>Our ski touring package includes experienced mountain guides with avalanche training, all safety equipment (beacon, probe, shovel), comfortable accommodation, and warming meals after cold days on the mountain. We also offer snowshoe excursions for non-skiers.</p>
-<div class="cta-box">
-    <h3>Ready for Your Own Adventure?</h3>
-    <p>Book your trip to the Sharr Mountains today</p>
-    <a href="../index.html#contact" class="btn">Book Now</a>
 </div>
-<a href="../blog.html" class="back-link">← Back to Blog</a>
+<div data-lang="fr" style="display:none">
+<p>Chaque hiver, pendant que les skieurs font la queue aux remontées bondées des Alpes, les montagnes de Sharr reposent silencieusement sous des mètres de poudreuse vierge. Aucune file. Aucune foule. Aucune piste damée.</p>
+
+<h2>La neige</h2>
+<p>Les montagnes de Sharr reçoivent des chutes de neige régulières de décembre à mars. L'influence continentale apporte une poudreuse froide et sèche — celle qui vous fait pousser des cris de joie à chaque virage.</p>
+
+<h2>Le terrain</h2>
+<p>Des vastes cuvettes au-dessus de la limite des arbres, des forêts de bouleaux parfaitement espacées pour le ski en sous-bois, et des couloirs pour ceux qui cherchent plus raide.</p>
+
+<h2>Pourquoi c'est spécial</h2>
+<p>En un mot : la solitude. Vous pouvez monter en peaux pendant une heure et avoir tout un versant pour vous seul.</p>
+
+<blockquote>"Trois jours de rando et nous n'avons pas vu un seul autre skieur. Des traces fraîches à chaque descente." — Andreas, Autriche</blockquote>
+
+<h2>Notre forfait hiver</h2>
+<p>Notre forfait ski de randonnée comprend des guides avec formation avalanche, tout l'équipement de sécurité (DVA, sonde, pelle), hébergement et repas réchauffants.</p>
+</div>
+<div data-lang="sq" style="display:none">
+<p>Çdo dimër, ndërsa skiatorët presin në radhë në Alpe, Malet e Sharrit pushojnë në heshtje nën metra borë të paprekur.</p>
+
+<h2>Bora</h2>
+<p>Malet e Sharrit marrin rreshje të rregullta bore nga dhjetori deri në mars.</p>
+
+<h2>Terreni</h2>
+<p>Lugina të gjera mbi vijën e pemëve, pyje thupre të hapura për ski në pyll, dhe korridore për ata që kërkojnë më shumë.</p>
+
+<h2>Paketa jonë dimërore</h2>
+<p>Përfshin udhërrëfyes me trajnim orteku, pajisje sigurie, akomodim dhe vakte ngrohëse.</p>
+</div>
+<div class="cta-box">
+    <h3 data-lang="en">Ready for Your Own Adventure?</h3><h3 data-lang="fr" style="display:none">Prêt pour votre propre aventure ?</h3><h3 data-lang="sq" style="display:none">Gati për aventurën tuaj?</h3>
+    <p data-lang="en">Book your trip to the Sharr Mountains today</p><p data-lang="fr" style="display:none">Réservez votre voyage dans les montagnes de Sharr</p><p data-lang="sq" style="display:none">Rezervoni udhëtimin tuaj në Malet e Sharrit</p>
+    <a href="../index.html#contact" class="btn" data-lang="en">Book Now</a><a href="../index.html#contact" class="btn" data-lang="fr" style="display:none">Réserver</a><a href="../index.html#contact" class="btn" data-lang="sq" style="display:none">Rezervo</a>
+</div>
+<a href="../blog.html" class="back-link" data-lang="en">← Back to Blog</a><a href="../blog.html" class="back-link" data-lang="fr" style="display:none">← Retour au Blog</a><a href="../blog.html" class="back-link" data-lang="sq" style="display:none">← Kthehu te Blogu</a>
 </div>
 <footer><p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo</p></footer>
 <script>
