@@ -12,7 +12,7 @@
 
         /* NAV */
         nav {
-            position: fixed; top: 28px; width: 100%; z-index: 100;
+            position: fixed; top: 0; width: 100%; z-index: 100;
             background: rgba(26,26,26,0.95); backdrop-filter: blur(10px);
             padding: 12px 30px; display: flex; justify-content: space-between;
             align-items: center; box-shadow: 0 2px 20px rgba(0,0,0,0.3);
@@ -27,7 +27,7 @@
 
         /* HEADER */
         .page-header {
-            padding: 148px 20px 60px; text-align: center; color: var(--white);
+            padding: 120px 20px 60px; text-align: center; color: var(--white);
             background: linear-gradient(135deg, rgba(26,26,26,0.8), rgba(232,97,26,0.15)), var(--dark);
         }
         .page-header h1 {
@@ -105,19 +105,13 @@
         }
 
         footer { background: #111; color: rgba(255,255,255,0.4); text-align: center; padding: 25px 20px; font-size: 0.8rem; }
-    .lang-bar { position: fixed; top: 28px; width: 100%; z-index: 200; background: var(--dark); display: flex; justify-content: flex-end; padding: 5px 20px; gap: 10px; }
-        .lang-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 3px 12px; font-size: 0.75rem; cursor: pointer; letter-spacing: 1px; font-family: 'Inter', sans-serif; transition: all 0.3s; }
+    .lang-bar { position: fixed; top: 0; width: 100%; z-index: 200; background: var(--dark); display: flex; justify-content: flex-end; padding: 5px 20px; gap: 10px; }
+        .nav-lang { display: flex; gap: 6px; align-items: center; } .lang-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 3px 12px; font-size: 0.75rem; cursor: pointer; letter-spacing: 1px; font-family: 'Inter', sans-serif; transition: all 0.3s; }
         .lang-btn.active, .lang-btn:hover { color: var(--orange); border-color: var(--orange); }
     </style>
 </head>
 <body>
 
-<!-- LANG BAR -->
-<div class="lang-bar">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('fr')">FR</button>
-    <button class="lang-btn" onclick="setLang('sq')">SQ</button>
-</div>
 
 <nav>
     <a href="index.html" class="brand">
@@ -131,6 +125,7 @@
         <li><a href="index.html#packages">Packages</a></li>
         <li><a href="index.html#contact">Book Now</a></li>
     </ul>
+    <div class="nav-lang"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('sq')">SQ</button></div>
     <div class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('show')"><span></span><span></span><span></span></div>
 </nav>
 
