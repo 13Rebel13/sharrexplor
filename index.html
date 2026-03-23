@@ -104,7 +104,7 @@
         #packages { background: var(--dark); color: var(--white); }
         #packages .section-title { color: var(--white); }
         #packages .section-subtitle { color: rgba(255,255,255,0.5); }
-        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
         .package-card { border: 1px solid rgba(255,255,255,0.1); padding: 35px; text-align: center; position: relative; transition: all 0.3s; }
         .package-card:hover { border-color: var(--orange); }
         .package-card.featured { border-color: var(--orange); background: rgba(232,97,26,0.05); }
@@ -302,10 +302,29 @@
         <p class="section-subtitle" data-lang="fr">Aventures tout compris — minimum 3 jours</p>
         <p class="section-subtitle" data-lang="sq">Aventura gjithëpërfshirëse — minimumi 3 ditë</p>
         <div class="packages-grid">
+            <!-- HIKING -->
             <div class="package-card">
-                <div class="package-name" data-lang="en">Active Package</div>
-                <div class="package-name" data-lang="fr">Forfait Actif</div>
-                <div class="package-name" data-lang="sq">Paketa Aktive</div>
+                <div class="package-name" data-lang="en">Hiking</div>
+                <div class="package-name" data-lang="fr">Randonneur</div>
+                <div class="package-name" data-lang="sq">Ecje Malore</div>
+                <div class="package-price">200 <span>CHF</span></div>
+                <div class="package-period" data-lang="en">per person / per day</div>
+                <div class="package-period" data-lang="fr">par personne / par jour</div>
+                <div class="package-period" data-lang="sq">për person / për ditë</div>
+                <ul class="package-features">
+                    <li data-lang="en">Professional mountain guide</li><li data-lang="fr">Guide de montagne professionnel</li><li data-lang="sq">Udhërrëfyes profesional mali</li>
+                    <li data-lang="en">Hotel accommodation</li><li data-lang="fr">Hébergement hôtel</li><li data-lang="sq">Akomodim në hotel</li>
+                    <li data-lang="en">All meals included</li><li data-lang="fr">Tous les repas inclus</li><li data-lang="sq">Të gjitha vaktet e përfshira</li>
+                    <li data-lang="en">Hiking equipment</li><li data-lang="fr">Équipement de randonnée</li><li data-lang="sq">Pajisje për ecje</li>
+                    <li data-lang="en">Airport & local transfers</li><li data-lang="fr">Transferts aéroport & locaux</li><li data-lang="sq">Transferta nga aeroporti & lokale</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="en">Book Now</a>
+                <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="fr">Réserver</a>
+                <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="sq">Rezervo</a>
+            </div>
+            <!-- MTB -->
+            <div class="package-card">
+                <div class="package-name">MTB / E-Bike</div>
                 <div class="package-price">250 <span>CHF</span></div>
                 <div class="package-period" data-lang="en">per person / per day</div>
                 <div class="package-period" data-lang="fr">par personne / par jour</div>
@@ -314,14 +333,15 @@
                     <li data-lang="en">Professional mountain guide</li><li data-lang="fr">Guide de montagne professionnel</li><li data-lang="sq">Udhërrëfyes profesional mali</li>
                     <li data-lang="en">Hotel accommodation</li><li data-lang="fr">Hébergement hôtel</li><li data-lang="sq">Akomodim në hotel</li>
                     <li data-lang="en">All meals included</li><li data-lang="fr">Tous les repas inclus</li><li data-lang="sq">Të gjitha vaktet e përfshira</li>
-                    <li data-lang="en">Equipment rental</li><li data-lang="fr">Location d'équipement</li><li data-lang="sq">Qira e pajisjeve</li>
                     <li data-lang="en">MTB or E-Bike rental</li><li data-lang="fr">Location VTT ou E-Bike</li><li data-lang="sq">Qira biçiklete mali ose E-Bike</li>
+                    <li data-lang="en">Riding equipment</li><li data-lang="fr">Équipement de cyclisme</li><li data-lang="sq">Pajisje për çiklizëm</li>
                     <li data-lang="en">Airport & local transfers</li><li data-lang="fr">Transferts aéroport & locaux</li><li data-lang="sq">Transferta nga aeroporti & lokale</li>
                 </ul>
                 <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="en">Book Now</a>
                 <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="fr">Réserver</a>
                 <a href="#contact" class="btn btn-outline" style="color:var(--orange);border-color:var(--orange);" data-lang="sq">Rezervo</a>
             </div>
+            <!-- FULL ENDURO -->
             <div class="package-card featured" data-badge="MOST POPULAR">
                 <div class="package-name">Full Enduro</div>
                 <div class="package-price">400 <span>CHF</span></div>
@@ -340,6 +360,7 @@
                 <a href="#contact" class="btn btn-primary" data-lang="fr">Réserver</a>
                 <a href="#contact" class="btn btn-primary" data-lang="sq">Rezervo</a>
             </div>
+            <!-- CUSTOM -->
             <div class="package-card">
                 <div class="package-name">Custom</div>
                 <div class="package-price" data-lang="en">À la carte</div>
@@ -452,8 +473,10 @@
                 <div class="form-row">
                     <select>
                         <option value="">Package / Forfait / Paketa</option>
+                        <option>Hiking / Randonneur — 200 CHF/day</option>
+                        <option>MTB / E-Bike — 250 CHF/day</option>
                         <option>Full Enduro — 400 CHF/day</option>
-                        <option>Active (Hiking/MTB) — 250 CHF/day</option>
+                        
                         <option>Custom — À la carte</option>
                     </select>
                     <input type="number" placeholder="Days / Jours / Ditë" min="3">
