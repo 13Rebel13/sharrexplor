@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ski Touring in the Sharr: Europe's Hidden Powder Paradise — SharreXplor Adventure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --orange: #E8611A; --orange-dark: #C4510F; --dark: #1A1A1A; --light: #F5F5F0; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(26,26,26,0.95); backdrop-filter: blur(10px); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+        nav .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        nav .brand img { height: 40px; width: auto; }
+        nav .brand-text { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); letter-spacing: 2px; }
+        nav .brand-text .b-explor { color: var(--orange); }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav ul a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+        nav ul a:hover { color: var(--orange); }
+        .article-hero { height: 50vh; min-height: 350px; background: linear-gradient(transparent 30%, rgba(0,0,0,0.7)), url('../img/gallery/gal_5.jpg') center/cover; display: flex; align-items: flex-end; padding: 40px; }
+        .article-hero-content { max-width: 800px; color: white; }
+        .article-hero .tag { display: inline-block; background: var(--orange); color: white; padding: 5px 15px; font-family: 'Oswald', sans-serif; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+        .article-hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); text-transform: uppercase; letter-spacing: 2px; line-height: 1.2; }
+        .article-hero .meta { margin-top: 12px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+        .article-body { max-width: 750px; margin: 0 auto; padding: 50px 20px 80px; }
+        .article-body p { line-height: 1.9; font-size: 1.05rem; color: #444; margin-bottom: 20px; }
+        .article-body h2 { font-family: 'Oswald', sans-serif; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; margin: 40px 0 15px; color: var(--dark); }
+        .article-body blockquote { border-left: 3px solid var(--orange); padding: 15px 25px; margin: 30px 0; background: var(--light); font-style: italic; color: #555; }
+        .article-body img { width: 100%; margin: 30px 0; }
+        .back-link { display: inline-block; margin-top: 30px; color: var(--orange); text-decoration: none; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .back-link:hover { color: var(--orange-dark); }
+        .cta-box { background: var(--dark); color: white; padding: 40px; text-align: center; margin: 40px 0; }
+        .cta-box h3 { font-family: 'Oswald', sans-serif; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .cta-box p { color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+        .cta-box .btn { display: inline-block; padding: 14px 35px; background: var(--orange); color: white; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; }
+        .mobile-menu { display: none; cursor: pointer; }
+        .mobile-menu span { display: block; width: 22px; height: 2px; background: white; margin: 5px 0; }
+        @media (max-width: 768px) { nav ul { display: none; } .mobile-menu { display: block; } .article-hero { height: 40vh; } }
+        footer { background: #111; color: rgba(255,255,255,0.4); text-align: center; padding: 25px 20px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="../index.html" class="brand"><img src="../logo.png" alt="SharreXplor"><span class="brand-text">SHARR<span class="b-explor">EXPLOR</span></span></a>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../gallery.html">Gallery</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#packages">Packages</a></li>
+        <li><a href="../index.html#contact">Book Now</a></li>
+    </ul>
+    <div class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('show')"><span></span><span></span><span></span></div>
+</nav>
+<div class="article-hero">
+    <div class="article-hero-content">
+        <span class="tag">Winter</span>
+        <h1>Ski Touring in the Sharr: Europe's Hidden Powder Paradise</h1>
+        <div class="meta">February 28, 2026 · 6 min read</div>
+    </div>
+</div>
+<div class="article-body">
+<p>Every winter, while skiers queue for overcrowded lifts in the Alps, the Sharr Mountains sit quietly under meters of untouched powder. No lift lines. No crowds. No groomed runs. Just pure, raw ski touring in one of Europe's last truly wild mountain ranges.</p>
+
+<h2>The Snow</h2>
+<p>The Sharr Mountains receive consistent snowfall from December through March. Continental influence brings cold, dry powder — the kind that makes you whoop with every turn. At higher elevations, good snow conditions can last well into April.</p>
+
+<h2>The Terrain</h2>
+<p>Think wide-open bowls above treeline, perfectly spaced birch forests for tree runs, and couloirs for those seeking steeper challenges. The elevation range of 1,500m to 2,700m offers incredible variety in a compact area.</p>
+
+<h2>Why It's Special</h2>
+<p>In a word: solitude. You can skin up for an hour and have an entire mountain face to yourself. No helicopters, no cat tracks, no other groups. Just you, your guide, and endless untracked snow.</p>
+
+<blockquote>"Three days of touring and we didn't see another skier. Fresh tracks every single run. This place is ten years behind the Alps — in the best possible way." — Andreas, Austria</blockquote>
+
+<h2>Our Winter Package</h2>
+<p>Our ski touring package includes experienced mountain guides with avalanche training, all safety equipment (beacon, probe, shovel), comfortable accommodation, and warming meals after cold days on the mountain. We also offer snowshoe excursions for non-skiers.</p>
+<div class="cta-box">
+    <h3>Ready for Your Own Adventure?</h3>
+    <p>Book your trip to the Sharr Mountains today</p>
+    <a href="../index.html#contact" class="btn">Book Now</a>
+</div>
+<a href="../blog.html" class="back-link">← Back to Blog</a>
+</div>
+<footer><p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo</p></footer>
+</body>
+</html>
