@@ -509,24 +509,36 @@
 
     // Language switcher
     function setLang(lang) {
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"').classList.add('active');
-        document.querySelectorAll('[data-lang]').forEach(el => {
+        // Switch visible content
+        document.querySelectorAll('[data-lang]').forEach(function(el) {
             if (el.dataset.lang === lang) {
                 el.style.display = '';
-                el.classList.add('show');
             } else {
                 el.style.display = 'none';
-                el.classList.remove('show');
-            }
             }
         });
+        // Update dropdown label
+        var labels = {'en':'EN','fr':'FR','sq':'SQ'};
+        var el = document.getElementById('current-lang');
+        if (el) el.textContent = labels[lang] || lang.toUpperCase();
+        // Close menu
+        var menu = document.querySelector('.lang-menu');
+        if (menu) menu.classList.remove('open');
+        // Save
+        localStorage.setItem('sharrexplor-lang', lang);
     }
-    // Init on load
-    
+
+    // Close dropdown on outside click
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.lang-dropdown')) {
+            var m = document.querySelector('.lang-menu');
+            if (m) m.classList.remove('open');
+        }
+    });
+
+    // Init with saved language
     var savedLang = localStorage.getItem('sharrexplor-lang') || 'en';
     setLang(savedLang);
-document.addEventListener('click', function(e) { if (!e.target.closest('.lang-dropdown')) { var m = document.querySelector('.lang-menu'); if (m) m.classList.remove('open'); } });
 </script>
 
 </body>
