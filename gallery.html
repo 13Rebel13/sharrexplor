@@ -144,17 +144,17 @@
 
 <div class="page-header">
     <div class="section-line"></div>
-    <h1>Gallery</h1>
-    <p>Real moments from the Sharr Mountains</p>
+    <h1 data-lang="en">Gallery</h1><h1 data-lang="fr" style="display:none">Galerie</h1><h1 data-lang="sq" style="display:none">Galeria</h1>
+    <p data-lang="en">Real moments from the Sharr Mountains</p><p data-lang="fr" style="display:none">Moments authentiques des montagnes de Sharr</p><p data-lang="sq" style="display:none">Momente autentike nga Malet e Sharrit</p>
 </div>
 
 <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+    <button class="filter-btn active" onclick="filterGallery('all', this)" data-tr="all">All</button>
     <button class="filter-btn" onclick="filterGallery('enduro', this)">Enduro</button>
     <button class="filter-btn" onclick="filterGallery('mtb', this)">MTB</button>
-    <button class="filter-btn" onclick="filterGallery('hiking', this)">Hiking</button>
-    <button class="filter-btn" onclick="filterGallery('winter', this)">Winter</button>
-    <button class="filter-btn" onclick="filterGallery('life', this)">Local Life</button>
+    <button class="filter-btn" onclick="filterGallery('hiking', this)" data-tr="hiking">Hiking</button>
+    <button class="filter-btn" onclick="filterGallery('winter', this)" data-tr="winter">Winter</button>
+    <button class="filter-btn" onclick="filterGallery('life', this)" data-tr="life">Local Life</button>
 </div>
 
 <div class="gallery">
@@ -223,9 +223,9 @@
 
 <script>
 var navTr = {
-    "en": {home:"Home", activities:"Activities", packages:"Packages", gallery:"Gallery", book:"Book Now"},
-    "fr": {home:"Accueil", activities:"Activités", packages:"Forfaits", gallery:"Galerie", book:"Réserver"},
-    "sq": {home:"Kryefaqja", activities:"Aktivitete", packages:"Paketat", gallery:"Galeria", book:"Rezervo"}
+    "en": {home:"Home", activities:"Activities", packages:"Packages", gallery:"Gallery", book:"Book Now", all:"All", hiking:"Hiking", winter:"Winter", life:"Local Life"},
+    "fr": {home:"Accueil", activities:"Activités", packages:"Forfaits", gallery:"Galerie", book:"Réserver", all:"Tout", hiking:"Randonnée", winter:"Hiver", life:"Vie locale"},
+    "sq": {home:"Kryefaqja", activities:"Aktivitete", packages:"Paketat", gallery:"Galeria", book:"Rezervo", all:"Të gjitha", hiking:"Ecje", winter:"Dimër", life:"Jeta lokale"}
 };
 function setLang(lang) {
     var tr = navTr[lang] || navTr["en"];
