@@ -37,22 +37,32 @@
         .mobile-menu span { display: block; width: 22px; height: 2px; background: white; margin: 5px 0; }
         @media (max-width: 768px) { nav ul { display: none; } .mobile-menu { display: block; } .article-hero { height: 40vh; } }
         footer { background: #111; color: rgba(255,255,255,0.4); text-align: center; padding: 25px 20px; font-size: 0.8rem; }
-    .lang-bar { position: fixed; top: 0; width: 100%; z-index: 200; background: #1A1A1A; display: flex; justify-content: flex-end; padding: 5px 20px; gap: 10px; } .lang-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 3px 12px; font-size: 0.75rem; cursor: pointer; letter-spacing: 1px; font-family: Inter, sans-serif; transition: all 0.3s; } .nav-lang { display: flex; gap: 6px; align-items: center; } .lang-dropdown{position:relative}.lang-trigger{cursor:pointer}.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:10px;background:rgba(26,26,26,0.97);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);min-width:150px;z-index:200;box-shadow:0 10px 30px rgba(0,0,0,0.4)}.lang-menu.open{display:block}.lang-menu a{display:block!important;padding:12px 18px;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;transition:all 0.2s;border-bottom:1px solid rgba(255,255,255,0.05)}.lang-menu a:hover{background:rgba(232,97,26,0.15);color:#E8611A}.lang-menu a:last-child{border-bottom:none} .lang-btn.active, .lang-btn:hover { color: #E8611A; border-color: #E8611A; }
+    .lang-bar { position: fixed; top: 0; width: 100%; z-index: 200; background: #1A1A1A; display: flex; justify-content: flex-end; padding: 5px 20px; gap: 10px; } .lang-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 3px 12px; font-size: 0.75rem; cursor: pointer; letter-spacing: 1px; font-family: Inter, sans-serif; transition: all 0.3s; } .nav-lang { display: flex; gap: 6px; align-items: center; } .lang-trigger{cursor:pointer}.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:10px;background:rgba(26,26,26,0.97);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);min-width:150px;z-index:200;box-shadow:0 10px 30px rgba(0,0,0,0.4)}.lang-menu.open{display:block}.lang-menu a{display:block!important;padding:12px 18px;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;transition:all 0.2s;border-bottom:1px solid rgba(255,255,255,0.05)}.lang-menu a:hover{background:rgba(232,97,26,0.15);color:#E8611A}.lang-menu a:last-child{border-bottom:none} 
+    .lang-dropdown{position:relative}.lang-trigger{cursor:pointer}.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:10px;background:rgba(26,26,26,0.97);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);min-width:150px;z-index:200;box-shadow:0 10px 30px rgba(0,0,0,0.4)}.lang-menu.open{display:block}.lang-menu a{display:block!important;padding:12px 18px;color:rgba(255,255,255,0.7)!important;text-decoration:none;font-size:0.85rem!important;transition:all 0.2s;border-bottom:1px solid rgba(255,255,255,0.05);letter-spacing:0!important;text-transform:none!important}.lang-menu a:hover{background:rgba(232,97,26,0.15);color:#E8611A!important}.lang-menu a:last-child{border-bottom:none}
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="../index.html" class="brand"><img src="../logo.png" alt="SharreXplor"><span class="brand-text">SHARR<span class="b-explor">EXPLOR</span></span></a>
+    <a href="../index.html" class="brand">
+        <img src="../logo.png" alt="SharreXplor">
+        <span class="brand-text">SHARR<span class="b-explor">EXPLOR</span></span>
+    </a>
     <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../gallery.html">Gallery</a></li>
+        <li><a href="../index.html" data-tr="home">Home</a></li>
+        <li><a href="../gallery.html" data-tr="gallery">Gallery</a></li>
         <li><a href="../blog.html">Blog</a></li>
-        <li><a href="../index.html#packages">Packages</a></li>
-        <li><a href="../index.html#contact">Book Now</a></li>
-        <li class="lang-dropdown"><a href="#" class="lang-trigger" onclick="event.preventDefault();document.querySelector('.lang-menu').classList.toggle('open');">🌐 <span id="current-lang">EN</span> ▾</a><div class="lang-menu"><a href="#" onclick="event.preventDefault();setLang('en');">🇬🇧 English</a><a href="#" onclick="event.preventDefault();setLang('fr');">🇫🇷 Français</a><a href="#" onclick="event.preventDefault();setLang('sq');">🇽🇰 Shqip</a></div></li>
+        <li><a href="../index.html#packages" data-tr="packages">Packages</a></li>
+        <li><a href="../index.html#contact" data-tr="book">Book Now</a></li>
+        <li class="lang-dropdown">
+            <a href="#" class="lang-trigger" onclick="event.preventDefault(); document.querySelector('.lang-menu').classList.toggle('open');">🌐 <span id="current-lang">EN</span> ▾</a>
+            <div class="lang-menu">
+                <a href="#" onclick="event.preventDefault(); setLang('en');">🇬🇧 English</a>
+                <a href="#" onclick="event.preventDefault(); setLang('fr');">🇫🇷 Français</a>
+                <a href="#" onclick="event.preventDefault(); setLang('sq');">🇽🇰 Shqip</a>
+            </div>
+        </li>
     </ul>
-    
     <div class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('show')"><span></span><span></span><span></span></div>
 </nav>
 <div class="article-hero">
@@ -91,5 +101,11 @@
 <a href="../blog.html" class="back-link">← Back to Blog</a>
 </div>
 <footer><p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo</p></footer>
-<script>function setLang(l){document.querySelectorAll(".lang-btn").forEach(function(b){b.classList.remove("active")});var btn=document.querySelector(".lang-btn[onclick*=\""+l+"\"]");if(btn)btn.classList.add("active");localStorage.setItem('sharrexplor-lang',l);var labels={'en':'EN','fr':'FR','sq':'SQ'};var el=document.getElementById('current-lang');if(el)el.textContent=labels[l]||l.toUpperCase();var menu=document.querySelector('.lang-menu');if(menu)menu.classList.remove('open')}var s=localStorage.getItem("sharrexplor-lang");if(s)setLang(s);</script></body>
+<script>
+var navTr={"en":{home:"Home",packages:"Packages",gallery:"Gallery",book:"Book Now"},"fr":{home:"Accueil",packages:"Forfaits",gallery:"Galerie",book:"Réserver"},"sq":{home:"Kryefaqja",packages:"Paketat",gallery:"Galeria",book:"Rezervo"}};
+function setLang(l){var tr=navTr[l]||navTr["en"];document.querySelectorAll("[data-tr]").forEach(function(el){if(tr[el.dataset.tr])el.textContent=tr[el.dataset.tr]});var labels={"en":"EN","fr":"FR","sq":"SQ"};var el=document.getElementById("current-lang");if(el)el.textContent=labels[l]||l.toUpperCase();var m=document.querySelector(".lang-menu");if(m)m.classList.remove("open");localStorage.setItem("sharrexplor-lang",l)}
+document.addEventListener("click",function(e){if(!e.target.closest(".lang-dropdown")){var m=document.querySelector(".lang-menu");if(m)m.classList.remove("open")}});
+var s=localStorage.getItem("sharrexplor-lang")||"en";setLang(s);
+</script>
+</body>
 </html>

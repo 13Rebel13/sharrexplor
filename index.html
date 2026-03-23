@@ -190,11 +190,11 @@
         <span class="brand-text">SHARR<span class="b-explor">EXPLOR</span></span>
     </a>
     <ul>
-        <li><a href="#activities" data-lang="en">Activities</a><a href="#activities" data-lang="fr">Activités</a><a href="#activities" data-lang="sq">Aktivitete</a></li>
-        <li><a href="#packages" data-lang="en">Packages</a><a href="#packages" data-lang="fr">Forfaits</a><a href="#packages" data-lang="sq">Paketat</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="#activities" data-tr="activities">Activities</a></li>
+        <li><a href="#packages" data-tr="packages">Packages</a></li>
+        <li><a href="gallery.html" data-tr="gallery">Gallery</a></li>
         <li><a href="blog.html">Blog</a></li>
-        <li><a href="#contact" data-lang="en">Book Now</a><a href="#contact" data-lang="fr">Réserver</a><a href="#contact" data-lang="sq">Rezervo</a></li>
+        <li><a href="#contact" data-tr="book">Book Now</a></li>
         <li class="lang-dropdown">
             <a href="#" class="lang-trigger" onclick="event.preventDefault(); document.querySelector('.lang-menu').classList.toggle('open');">🌐 <span id="current-lang">EN</span> ▾</a>
             <div class="lang-menu">
@@ -507,28 +507,33 @@
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Language switcher
+    // Nav translations
+    var navTr = {
+        'en': {activities:'Activities', packages:'Packages', gallery:'Gallery', book:'Book Now'},
+        'fr': {activities:'Activités', packages:'Forfaits', gallery:'Galerie', book:'Réserver'},
+        'sq': {activities:'Aktivitete', packages:'Paketat', gallery:'Galeria', book:'Rezervo'}
+    };
+
     function setLang(lang) {
-        // Switch visible content
+        // Switch content with data-lang
         document.querySelectorAll('[data-lang]').forEach(function(el) {
-            if (el.dataset.lang === lang) {
-                el.style.display = '';
-            } else {
-                el.style.display = 'none';
-            }
+            el.style.display = (el.dataset.lang === lang) ? '' : 'none';
+        });
+        // Translate nav items
+        var tr = navTr[lang] || navTr['en'];
+        document.querySelectorAll('[data-tr]').forEach(function(el) {
+            if (tr[el.dataset.tr]) el.textContent = tr[el.dataset.tr];
         });
         // Update dropdown label
         var labels = {'en':'EN','fr':'FR','sq':'SQ'};
         var el = document.getElementById('current-lang');
         if (el) el.textContent = labels[lang] || lang.toUpperCase();
-        // Close menu
+        // Close menu & save
         var menu = document.querySelector('.lang-menu');
         if (menu) menu.classList.remove('open');
-        // Save
         localStorage.setItem('sharrexplor-lang', lang);
     }
 
-    // Close dropdown on outside click
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.lang-dropdown')) {
             var m = document.querySelector('.lang-menu');
@@ -536,7 +541,6 @@
         }
     });
 
-    // Init with saved language
     var savedLang = localStorage.getItem('sharrexplor-lang') || 'en';
     setLang(savedLang);
 </script>
