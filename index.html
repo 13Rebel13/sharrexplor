@@ -13,11 +13,7 @@
         body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
 
         /* LANG SWITCHER */
-        .lang-bar {
-            position: fixed; top: 0; width: 100%; z-index: 200;
-            background: var(--dark); display: flex; justify-content: flex-end;
-            padding: 5px 20px; gap: 10px;
-        }
+.nav-lang { display: flex; gap: 6px; align-items: center; }
         .lang-btn {
             background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);
             padding: 3px 12px; font-size: 0.75rem; cursor: pointer; letter-spacing: 1px;
@@ -69,7 +65,7 @@
 
         /* NAV */
         nav {
-            position: fixed; top: 28px; width: 100%; z-index: 100;
+            position: fixed; top: 0; width: 100%; z-index: 100;
             padding: 12px 30px; display: flex; justify-content: space-between;
             align-items: center; transition: all 0.3s;
         }
@@ -176,12 +172,7 @@
 </head>
 <body>
 
-<!-- LANG BAR -->
-<div class="lang-bar">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('fr')">FR</button>
-    <button class="lang-btn" onclick="setLang('sq')">SQ</button>
-</div>
+
 
 <!-- NAV -->
 <nav id="navbar">
@@ -196,6 +187,7 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#contact" data-lang="en">Book Now</a><a href="#contact" data-lang="fr">Réserver</a><a href="#contact" data-lang="sq">Rezervo</a></li>
     </ul>
+    <div class="nav-lang"><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('sq')">SQ</button></div>
     <div class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('show')"><span></span><span></span><span></span></div>
 </nav>
 
