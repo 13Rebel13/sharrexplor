@@ -13,13 +13,22 @@
         body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
 
         /* LANG SWITCHER */
-.nav-lang { display: flex; gap: 6px; align-items: center; }
-        .lang-btn {
-            background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);
-            padding: 3px 12px; font-size: 0.75rem; cursor: pointer; letter-spacing: 1px;
-            font-family: 'Inter', sans-serif; transition: all 0.3s;
+.lang-dropdown { position: relative; }
+        .lang-trigger { cursor: pointer; }
+        .lang-menu {
+            display: none; position: absolute; top: 100%; right: 0; margin-top: 10px;
+            background: rgba(26,26,26,0.97); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1); min-width: 150px; z-index: 200;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
-        .lang-btn.active, .lang-btn:hover { color: var(--orange); border-color: var(--orange); }
+        .lang-menu.open { display: block; }
+        .lang-menu a {
+            display: block !important; padding: 12px 18px; color: rgba(255,255,255,0.7);
+            text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .lang-menu a:hover { background: rgba(232,97,26,0.15); color: var(--orange); }
+        .lang-menu a:last-child { border-bottom: none; }
 
         [data-lang] { display: none; }
         [data-lang].show { display: block; }
@@ -186,8 +195,15 @@
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#contact" data-lang="en">Book Now</a><a href="#contact" data-lang="fr">Réserver</a><a href="#contact" data-lang="sq">Rezervo</a></li>
+        <li class="lang-dropdown">
+            <a href="#" class="lang-trigger" onclick="event.preventDefault(); document.querySelector('.lang-menu').classList.toggle('open');">🌐 <span id="current-lang">EN</span> ▾</a>
+            <div class="lang-menu">
+                <a href="#" onclick="event.preventDefault(); setLang('en');">🇬🇧 English</a>
+                <a href="#" onclick="event.preventDefault(); setLang('fr');">🇫🇷 Français</a>
+                <a href="#" onclick="event.preventDefault(); setLang('sq');">🇽🇰 Shqip</a>
+            </div>
+        </li>
     </ul>
-    <div class="nav-lang"><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('sq')">SQ</button></div>
     <div class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('show')"><span></span><span></span><span></span></div>
 </nav>
 
@@ -510,6 +526,7 @@
     
     var savedLang = localStorage.getItem('sharrexplor-lang') || 'en';
     setLang(savedLang);
+document.addEventListener('click', function(e) { if (!e.target.closest('.lang-dropdown')) { var m = document.querySelector('.lang-menu'); if (m) m.classList.remove('open'); } });
 </script>
 
 </body>
