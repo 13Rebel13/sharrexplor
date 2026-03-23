@@ -189,10 +189,10 @@
         <span class="brand-text">SHARR<span class="b-explor">EXPLOR</span></span>
     </a>
     <ul>
-        <li><a href="#activities" data-lang="en" class="show">Activities</a><a href="#activities" data-lang="fr">Activités</a><a href="#activities" data-lang="sq">Aktivitete</a></li>
-        <li><a href="#packages" data-lang="en" class="show">Packages</a><a href="#packages" data-lang="fr">Forfaits</a><a href="#packages" data-lang="sq">Paketat</a></li>
-        <li><a href="#location" data-lang="en" class="show">Location</a><a href="#location" data-lang="fr">Lieu</a><a href="#location" data-lang="sq">Vendndodhja</a></li>
-        <li><a href="#contact" data-lang="en" class="show">Book Now</a><a href="#contact" data-lang="fr">Réserver</a><a href="#contact" data-lang="sq">Rezervo</a></li>
+        <li><a href="#activities" data-lang="en">Activities</a><a href="#activities" data-lang="fr">Activités</a><a href="#activities" data-lang="sq">Aktivitete</a></li>
+        <li><a href="#packages" data-lang="en">Packages</a><a href="#packages" data-lang="fr">Forfaits</a><a href="#packages" data-lang="sq">Paketat</a></li>
+        <li><a href="#location" data-lang="en">Location</a><a href="#location" data-lang="fr">Lieu</a><a href="#location" data-lang="sq">Vendndodhja</a></li>
+        <li><a href="#contact" data-lang="en">Book Now</a><a href="#contact" data-lang="fr">Réserver</a><a href="#contact" data-lang="sq">Rezervo</a></li>
     </ul>
     <div class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('show')"><span></span><span></span><span></span></div>
 </nav>
@@ -203,7 +203,7 @@
     <h1><span class="sharr">SHARR</span><span class="explor">EXPLOR</span></h1>
     <div class="tagline">Adventure</div>
     <div class="location">📍 Sharr Mountains · Prizren · Kosovo</div>
-    <div class="cta" data-lang="en" style="display:flex">
+    <div class="cta" data-lang="en">
         <a href="#packages" class="btn btn-primary">View Packages</a>
         <a href="#contact" class="btn btn-outline">Book Your Trip</a>
     </div>
@@ -221,7 +221,7 @@
 <section id="activities">
     <div class="container">
         <div class="section-line"></div>
-        <h2 class="section-title" data-lang="en" class="show">Choose Your Adventure</h2>
+        <h2 class="section-title" data-lang="en">Choose Your Adventure</h2>
         <h2 class="section-title" data-lang="fr">Choisissez Votre Aventure</h2>
         <h2 class="section-title" data-lang="sq">Zgjidhni Aventurën Tuaj</h2>
         <p class="section-subtitle" data-lang="en">From adrenaline-pumping enduro rides to peaceful mountain hikes</p>
@@ -477,16 +477,19 @@
     // Language switcher
     function setLang(lang) {
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+        document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"').classList.add('active');
         document.querySelectorAll('[data-lang]').forEach(el => {
-            el.classList.toggle('show', el.dataset.lang === lang);
-        });
-        // Show elements without data-lang (always visible)
-        document.querySelectorAll('.cta[data-lang]').forEach(el => {
-            el.style.display = el.dataset.lang === lang ? 'flex' : 'none';
+            if (el.dataset.lang === lang) {
+                el.style.display = '';
+                el.classList.add('show');
+            } else {
+                el.style.display = 'none';
+                el.classList.remove('show');
+            }
         });
     }
-    // Init
+    // Init on load
+    document.addEventListener('DOMContentLoaded', function() { setLang('en'); });
     setLang('en');
 </script>
 
