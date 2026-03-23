@@ -235,12 +235,15 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 
 <script>
 function setLang(lang) {
-    document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
-    document.querySelector(".lang-btn[onclick*="" + lang + ""]").classList.add("active");
-    localStorage.setItem("sharrexplor-lang", lang);
+    document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+    var btn = document.querySelector('.lang-btn[onclick*="' + lang + '"]');
+    if (btn) btn.classList.add('active');
+    localStorage.setItem('sharrexplor-lang', lang);
 }
-var savedLang = localStorage.getItem("sharrexplor-lang");
-if (savedLang) { setLang(savedLang); }
+(function() {
+    var saved = localStorage.getItem('sharrexplor-lang');
+    if (saved) setLang(saved);
+})();
 </script>
 </body>
 </html>

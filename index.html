@@ -515,8 +515,9 @@
         });
     }
     // Init on load
-    document.addEventListener('DOMContentLoaded', function() { setLang('en'); });
-    var savedLang = localStorage.getItem('sharrexplor-lang') || 'en'; setLang(savedLang);
+    
+    var savedLang = localStorage.getItem('sharrexplor-lang') || 'en';
+    setLang(savedLang);
 </script>
 
 </body>

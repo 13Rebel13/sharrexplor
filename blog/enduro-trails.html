@@ -89,5 +89,5 @@
 <a href="../blog.html" class="back-link">← Back to Blog</a>
 </div>
 <footer><p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo</p></footer>
-<script>function setLang(l){document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));document.querySelector(".lang-btn[onclick*=\""+l+"\"]").classList.add("active");localStorage.setItem("sharrexplor-lang",l);}var s=localStorage.getItem("sharrexplor-lang");if(s)setLang(s);</script></body>
+<script>function setLang(l){document.querySelectorAll(".lang-btn").forEach(function(b){b.classList.remove("active")});var btn=document.querySelector(".lang-btn[onclick*=\""+l+"\"]");if(btn)btn.classList.add("active");localStorage.setItem("sharrexplor-lang",l)}var s=localStorage.getItem("sharrexplor-lang");if(s)setLang(s);</script></body>
 </html>
