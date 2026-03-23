@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — SharreXplor Adventure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --orange: #E8611A; --orange-dark: #C4510F; --dark: #1A1A1A; --light: #F5F5F0; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(26,26,26,0.95); backdrop-filter: blur(10px);
+            padding: 12px 30px; display: flex; justify-content: space-between;
+            align-items: center; box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        nav .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        nav .brand img { height: 40px; width: auto; }
+        nav .brand-text { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); letter-spacing: 2px; }
+        nav .brand-text .b-explor { color: var(--orange); }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav ul a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+        nav ul a:hover, nav ul a.active { color: var(--orange); }
+
+        .page-header {
+            padding: 120px 20px 60px; text-align: center;
+            background: linear-gradient(135deg, rgba(26,26,26,0.85), rgba(26,26,26,0.7)),
+                        url('img/hero.jpg') center/cover; color: var(--white);
+        }
+        .page-header h1 { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; }
+        .page-header p { color: rgba(255,255,255,0.5); margin-top: 10px; letter-spacing: 1px; }
+        .section-line { width: 60px; height: 3px; background: var(--orange); margin: 0 auto 18px; }
+
+        /* BLOG LAYOUT */
+        .blog-container {
+            max-width: 900px; margin: 0 auto; padding: 60px 20px;
+        }
+        .blog-card {
+            display: grid; grid-template-columns: 300px 1fr; gap: 30px;
+            margin-bottom: 40px; padding-bottom: 40px;
+            border-bottom: 1px solid #eee;
+        }
+        .blog-card:last-child { border-bottom: none; }
+        .blog-img {
+            height: 220px; background-size: cover; background-position: center;
+            position: relative; overflow: hidden;
+        }
+        .blog-img .blog-tag {
+            position: absolute; top: 12px; left: 12px;
+            background: var(--orange); color: white; padding: 4px 12px;
+            font-family: 'Oswald', sans-serif; font-size: 0.7rem;
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+        .blog-content { display: flex; flex-direction: column; justify-content: center; }
+        .blog-date {
+            font-size: 0.8rem; color: #999; letter-spacing: 1px;
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .blog-content h2 {
+            font-family: 'Oswald', sans-serif; font-size: 1.5rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .blog-content h2 a { color: var(--dark); text-decoration: none; transition: color 0.3s; }
+        .blog-content h2 a:hover { color: var(--orange); }
+        .blog-content p { color: #666; line-height: 1.7; font-size: 0.9rem; margin-bottom: 15px; }
+        .read-more {
+            font-family: 'Oswald', sans-serif; font-size: 0.85rem;
+            color: var(--orange); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 1px; transition: color 0.3s;
+        }
+        .read-more:hover { color: var(--orange-dark); }
+
+        /* SIDEBAR-STYLE NEWSLETTER */
+        .newsletter {
+            background: var(--dark); color: var(--white); padding: 50px 40px;
+            text-align: center; margin: 20px 0 60px;
+        }
+        .newsletter h3 {
+            font-family: 'Oswald', sans-serif; font-size: 1.5rem;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;
+        }
+        .newsletter p { color: rgba(255,255,255,0.5); margin-bottom: 20px; font-size: 0.9rem; }
+        .newsletter-form { display: flex; gap: 10px; max-width: 500px; margin: 0 auto; }
+        .newsletter-form input {
+            flex: 1; padding: 14px; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15); color: white;
+            font-family: 'Inter', sans-serif; font-size: 0.9rem;
+        }
+        .newsletter-form input:focus { outline: none; border-color: var(--orange); }
+        .newsletter-form button {
+            padding: 14px 30px; background: var(--orange); color: white;
+            border: none; font-family: 'Oswald', sans-serif; font-size: 0.9rem;
+            letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+            transition: background 0.3s;
+        }
+        .newsletter-form button:hover { background: var(--orange-dark); }
+
+        .mobile-menu { display: none; cursor: pointer; }
+        .mobile-menu span { display: block; width: 22px; height: 2px; background: white; margin: 5px 0; }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .mobile-menu { display: block; }
+            .blog-card { grid-template-columns: 1fr; }
+            .blog-img { height: 200px; }
+            .page-header h1 { font-size: 2rem; }
+            .newsletter-form { flex-direction: column; }
+        }
+
+        footer { background: #111; color: rgba(255,255,255,0.4); text-align: center; padding: 25px 20px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="brand">
+        <img src="logo.png" alt="SharreXplor">
+        <span class="brand-text">SHARR<span class="b-explor">EXPLOR</span></span>
+    </a>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="index.html#packages">Packages</a></li>
+        <li><a href="index.html#contact">Book Now</a></li>
+    </ul>
+    <div class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('show')"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-header">
+    <div class="section-line"></div>
+    <h1>Blog</h1>
+    <p>Stories, tips & news from the Sharr Mountains</p>
+</div>
+
+<div class="blog-container">
+
+    <!-- ARTICLE 1 -->
+    <article class="blog-card">
+        <div class="blog-img" style="background-image: url('img/gallery/gal_0.jpg')">
+            <div class="blog-tag">Enduro</div>
+        </div>
+        <div class="blog-content">
+            <div class="blog-date">March 20, 2026</div>
+            <h2><a href="#">Top 5 Enduro Trails in the Sharr Mountains</a></h2>
+            <p>From river crossings to rocky ridgelines, the Sharr Mountains hide some of the best enduro trails in the Balkans. Here are our top 5 routes that every rider should experience at least once.</p>
+            <a href="#" class="read-more">Read More →</a>
+        </div>
+    </article>
+
+    <!-- ARTICLE 2 -->
+    <article class="blog-card">
+        <div class="blog-img" style="background-image: url('img/gallery/gal_2.jpg')">
+            <div class="blog-tag">Hiking</div>
+        </div>
+        <div class="blog-content">
+            <div class="blog-date">March 15, 2026</div>
+            <h2><a href="#">A Beginner's Guide to Trekking in Kosovo</a></h2>
+            <p>Kosovo remains one of Europe's best-kept secrets for hikers. Discover everything you need to know before your first trek — from what to pack to the best season, and why the Sharr Mountains should be your first destination.</p>
+            <a href="#" class="read-more">Read More →</a>
+        </div>
+    </article>
+
+    <!-- ARTICLE 3 -->
+    <article class="blog-card">
+        <div class="blog-img" style="background-image: url('img/gallery/gal_3.jpg')">
+            <div class="blog-tag">Culture</div>
+        </div>
+        <div class="blog-content">
+            <div class="blog-date">March 10, 2026</div>
+            <h2><a href="#">The Art of Albanian Mountain Cuisine</a></h2>
+            <p>There's nothing quite like a traditional lamb roast after a full day on the trails. Discover the rich culinary traditions of the Sharr region — from fresh mountain cheese to slow-cooked specialties passed down through generations.</p>
+            <a href="#" class="read-more">Read More →</a>
+        </div>
+    </article>
+
+    <!-- ARTICLE 4 -->
+    <article class="blog-card">
+        <div class="blog-img" style="background-image: url('img/gallery/gal_5.jpg')">
+            <div class="blog-tag">Winter</div>
+        </div>
+        <div class="blog-content">
+            <div class="blog-date">February 28, 2026</div>
+            <h2><a href="#">Ski Touring in the Sharr: Europe's Hidden Powder Paradise</a></h2>
+            <p>While the Alps get crowded, the Sharr Mountains offer untouched powder, zero crowds, and epic descents. Here's why ski touring in Kosovo is the next big thing for freeride enthusiasts.</p>
+            <a href="#" class="read-more">Read More →</a>
+        </div>
+    </article>
+
+    <!-- ARTICLE 5 -->
+    <article class="blog-card">
+        <div class="blog-img" style="background-image: url('img/gallery/gal_1.jpg')">
+            <div class="blog-tag">MTB</div>
+        </div>
+        <div class="blog-content">
+            <div class="blog-date">February 20, 2026</div>
+            <h2><a href="#">Mountain Biking Kosovo: What You Need to Know</a></h2>
+            <p>E-bikes, downhill, cross-country — the Sharr Mountains have it all. We break down the best trails, gear recommendations, and why Kosovo is becoming a top MTB destination in the Balkans.</p>
+            <a href="#" class="read-more">Read More →</a>
+        </div>
+    </article>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter">
+        <h3>Stay in the Loop</h3>
+        <p>Get the latest trail reports, trip stories and exclusive offers</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+</div>
+
+<footer><p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo</p></footer>
+
+</body>
+</html>
