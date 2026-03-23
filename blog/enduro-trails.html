@@ -147,7 +147,7 @@
 <footer><p>&copy; 2026 SharreXplor Adventure · Sharr Mountains, Kosovo</p></footer>
 <script>
 var navTr={"en":{home:"Home",packages:"Packages",gallery:"Gallery",book:"Book Now"},"fr":{home:"Accueil",packages:"Forfaits",gallery:"Galerie",book:"Réserver"},"sq":{home:"Kryefaqja",packages:"Paketat",gallery:"Galeria",book:"Rezervo"}};
-function setLang(l){var tr=navTr[l]||navTr["en"];document.querySelectorAll("[data-tr]").forEach(function(el){if(tr[el.dataset.tr])el.textContent=tr[el.dataset.tr]});var labels={"en":"EN","fr":"FR","sq":"SQ"};var el=document.getElementById("current-lang");if(el)el.textContent=labels[l]||l.toUpperCase();var m=document.querySelector(".lang-menu");if(m)m.classList.remove("open");localStorage.setItem("sharrexplor-lang",l)}
+function setLang(l){var tr=navTr[l]||navTr["en"];document.querySelectorAll("[data-tr]").forEach(function(el){if(tr[el.dataset.tr])el.textContent=tr[el.dataset.tr]});var labels={"en":"EN","fr":"FR","sq":"SQ"};var el=document.getElementById("current-lang");if(el)el.textContent=labels[l]||l.toUpperCase();var m=document.querySelector(".lang-menu");if(m)m.classList.remove("open");localStorage.setItem("sharrexplor-lang",l);document.querySelectorAll('[data-lang]').forEach(function(el){el.style.display=(el.dataset.lang===l)?'':'none'})}
 document.addEventListener("click",function(e){if(!e.target.closest(".lang-dropdown")){var m=document.querySelector(".lang-menu");if(m)m.classList.remove("open")}});
 var s=localStorage.getItem("sharrexplor-lang")||"en";setLang(s);
 </script>
